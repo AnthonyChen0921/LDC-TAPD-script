@@ -1,7 +1,8 @@
 import requests
 import json
 from datetime import datetime
-
+import pandas as pd
+import time
 
 cookie_json_string = """
 [
@@ -174,6 +175,7 @@ cookie_json_string = """
 """
 
 def fetch_data(workspace_id, entity_id, cookie_list):
+    entity_id = "115598930900" + entity_id
     # Convert the list of cookie dictionaries to a string format
     cookies = "; ".join([f"{c['name']}={c['value']}" for c in cookie_list])
 
@@ -223,14 +225,20 @@ cookie_list = json.loads(cookie_json_string)
 
 # Your workspace_id and entity_id
 workspace_id = '55989309'
-entity_id = '1155989309001001912'
+# entity_id = '1155989309001001912'
 
 # Fetch data
-data = fetch_data(workspace_id, entity_id, cookie_list)
+# data = fetch_data(workspace_id, entity_id, cookie_list)
 
+
+# In most cases, earliest time would be the response time
 def get_earliest_time(response_data):
     # Extract the 'comments' list from the data
     comments = response_data['data']['comments']
+
+    # Check if the comments list is empty
+    if not comments:
+        return None
 
     # Extract the 'created' field from each comment and convert it to a datetime object
     created_times = [datetime.strptime(comment['created'], '%Y-%m-%d %H:%M:%S') for comment in comments]
@@ -242,12 +250,54 @@ def get_earliest_time(response_data):
 
 
 
+########## read excel 
 
-# Print data
-# print(json.dumps(data, indent=4))
+# Assuming your excel file is named 'input.xlsx' and is in the same directory as this script
+df = pd.read_excel('input_small.xlsx')
 
-# Use the function to get the earliest date
-earliest_time = get_earliest_time(data)
+# Define the function to fetch data and get the earliest time
+def fetch_and_get_earliest_time(workspace_id, entity_id, cookie_list):
+    # Fetch the data
+    data = fetch_data(workspace_id, entity_id, cookie_list)
 
-# Print the earliest date
-print(earliest_time)
+    # Get the earliest time
+    try:
+        earliest_time = get_earliest_time(data)
+        if earliest_time is None:
+            print(f"No comments found for entity_id {entity_id}")
+            return None
+    except ValueError:
+        print(f"Error encountered when processing entity_id {entity_id}")
+        return None
+
+    print(f"The earliest time for entity_id {entity_id} is {earliest_time}")
+
+    return earliest_time
+
+# Iterate over each ID in the dataframe
+for i, row in df.iterrows():
+    entity_id = str(row['ID'])  # Assuming the column with the IDs is named 'ID'
+    earliest_time = fetch_and_get_earliest_time(workspace_id, entity_id, cookie_list)
+
+    # Add the earliest time to the '响应时间' column of the current row
+    df.loc[i, '响应时间'] = earliest_time
+    # Convert date to string
+    earliest_time_str = earliest_time.strftime('%Y-%m-%d %H:%M:%S')
+    df.loc[i, '响应时间_str'] = earliest_time_str
+
+    # Print a success message
+    print(f"{entity_id} completed, processing next request...")
+
+    # Pause for a while to avoid hitting API rate limits
+    time.sleep(0.5)  # sleep for 1.2 seconds
+
+# Save the updated dataframe to a new excel file
+df.to_excel('output.xlsx', index=False)
+
+
+# if nothing goes wrong, should be succeed
+print("success")
+
+
+
+
