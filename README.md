@@ -7,7 +7,6 @@
 
 
 ## How to Run the Script
-
 Make sure your input file is named 'input.xlsx' and it is in the same directory as the script.
 Run the script. It will prompt you to enter a starting ID and ending ID, these should be integer values present in your data. This range of IDs will be used to filter the data.
 After processing the data, the script will output an Excel file named 'output_{start_id}_{end_id}.xlsx'. This file will contain the processed data.
@@ -15,7 +14,6 @@ After processing the data, the script will output an Excel file named 'output_{s
 
 
 ## What does the script do?
-
 The script reads data from the 'input.xlsx' file, filters the data based on the given ID range, adds a '响应时间' column, calculates the response and resolution time difference, splits the data based on the '优先级' column, and finally calculates compliance rates for each priority level.
 
 
@@ -57,12 +55,13 @@ The script will prompt you for workspace id after displaying a welcome message. 
 
 If you get an error related to missing modules, please install them using pip and try again.
 If you get an error related to file not found, please ensure that the 'test_all.xlsx' and 'cookies.json' files are in the same directory as the script.
-If you get an error related to incorrect data, please check your 'test_all.xlsx' file for any anomalies.
+If you get an error related to incorrect data, please check your 'input.xlsx' file for any anomalies.
 
 
 
 ## Disclaimer
-This script is provided as-is, and it may require adjustments based on your specific needs, such as file names, file locations, and specific business logic. Please use it as a reference and modify it as necessary to suit your requirements.
+
+> This script is provided as-is, and it may require adjustments based on your specific needs, such as file names, file locations, and specific business logic. Please use it as a reference and modify it as necessary to suit your requirements.
 
 
 Edit by 1nka 2023/8/1, If you have further questions, please contact me.
