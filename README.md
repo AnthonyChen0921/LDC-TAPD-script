@@ -9,6 +9,13 @@
 ## How to Run the Script
 Make sure your input file is named 'input.xlsx' and it is in the same directory as the script.
 Run the script. It will prompt you to enter a starting ID and ending ID, these should be integer values present in your data. This range of IDs will be used to filter the data.
+
+Use the following command to run the script:
+
+```
+python main.py
+```
+
 After processing the data, the script will output an Excel file named 'output_{start_id}_{end_id}.xlsx'. This file will contain the processed data.
 
 
