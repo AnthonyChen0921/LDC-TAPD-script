@@ -26,6 +26,7 @@ workspace_id = get_workspace_id()
 
 # Assuming your excel file is named 'input.xlsx' and is in the same directory as this script
 df = pd.read_excel('test_all.xlsx')
+# df = pd.read_excel('input.xlsx')
 
 # Get the ID range from the user
 id_start = int(input("请填入需要查询的起始ID (i.e. 1001705) Please enter the starting ID: "))
