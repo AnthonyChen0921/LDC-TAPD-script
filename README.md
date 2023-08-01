@@ -33,7 +33,6 @@ Please install these before running the script using pip:
 
 ```
 pip install pandas requests json time openpyxl
-
 ```
 
 To read Excel files, you need to install the xlrd library or openpyxl as well:
@@ -41,7 +40,6 @@ To read Excel files, you need to install the xlrd library or openpyxl as well:
 
 ```
 pip install xlrd openpyxl
-
 ```
 
 The script also uses custom modules named 'data_utils' and 'utils'. Ensure these are available in your Python path.
