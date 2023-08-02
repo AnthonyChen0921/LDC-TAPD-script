@@ -6,7 +6,6 @@ from email.mime.text import MIMEText
 smtp_server = 'smtprelay.ldc.com'
 smtp_port = 25
 username = 'bei_occontdocs2@ldc.com'
-password = 'ldc@54321'
 
 # recipient email, replace it with the recipient's email address
 to_email = 'erdong.chen-ext@ldc.com'
@@ -23,8 +22,6 @@ msg.attach(MIMEText(body, 'plain'))
 try:
     # setup the SMTP server
     server = smtplib.SMTP(smtp_server, smtp_port)
-    server.starttls()  # remove this line if your server doesn't use STARTTLS
-    server.login(username, password)
 
     # send the email
     text = msg.as_string()
