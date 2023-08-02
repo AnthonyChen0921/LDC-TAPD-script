@@ -4,6 +4,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+# https://www.tapd.cn/fastapp/jump.php?target=https%3A%2F%2Fwww.tapd.cn%2F55989309%2Fprong%2Fstories%2Fview%2F1155989309001001871%3Fjump_count%3D1
+
 def send_email(to_email, subject, body):
     # your email credentials
     smtp_server = 'smtprelay.ldc.com'
