@@ -32,7 +32,7 @@ data = {
     # insert your JSON payload here if needed
 }
 
-response = requests.post(url, headers=headers, params=params, data=json.dumps(data))
+response = requests.post(url, headers=headers, params=params, data=json.dumps(data), verify=False)
 
 # Now we can print the status code, headers, and json data from the response
 print(f'Status Code: {response.status_code}')

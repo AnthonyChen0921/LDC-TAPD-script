@@ -6,20 +6,143 @@
         "filter_type": "base"
       },
       "meta": { "code": "0", "message": "success" },
-      "timestamp": "1690941326"
+      "timestamp": "1690955329"
     },
     "stories_list": {
       "data": {
-        "all_story_count": "1417",
-        "total_count": "1417",
+        "all_story_count": "1420",
+        "total_count": "1420",
         "stories_list": [
+          {
+            "Story": {
+              "id": "1155989309001001941",
+              "name": "Case-\u8f6c\u6708\u4e4b\u540e\uff0c\u5408\u540c\u57fa\u5dee\u4ef7\u683c\u4e0d\u5bf9",
+              "priority": "4",
+              "iteration_id": "0",
+              "status": "status_2",
+              "owner": "",
+              "begin": "",
+              "due": "",
+              "children_id": "|",
+              "workitem_type_id": "1155989309001000004",
+              "level": "0",
+              "path": "1155989309001001941:",
+              "workspace_id": "55989309",
+              "attachment_count": "0",
+              "confidential": "N",
+              "creator": "\u9093\u83f2",
+              "ancestor_id": "1155989309001001941",
+              "follower": "",
+              "secret_root_id": "0",
+              "parent_id": "0",
+              "effort_completed": "0",
+              "enable_quickly_transfer": "0",
+              "workitem_type_color": "#f85e5e",
+              "workitem_type_english_name": "PrdCase",
+              "workitem_type_name": "\u751f\u4ea7Case",
+              "status_alias": "\u65b0\u95ee\u9898",
+              "relate_story_count": "0",
+              "tree_node_count": "1",
+              "has_sub_task": "0",
+              "iteration_info": "",
+              "secret_workitem": "0",
+              "short_id": "1001941",
+              "parent_name": "",
+              "relative_id": "0",
+              "delay": "0",
+              "is_delay": "0",
+              "_parent_id": "0"
+            }
+          },
+          {
+            "Story": {
+              "id": "1155989309001001940",
+              "name": "Case-\u8f6c\u6708\u4e4b\u540e\uff0c\u5408\u540c\u57fa\u5dee\u4ef7\u683c\u4e0d\u5bf9",
+              "priority": "4",
+              "iteration_id": "0",
+              "status": "status_12",
+              "owner": "",
+              "begin": "",
+              "due": "",
+              "children_id": "|",
+              "workitem_type_id": "1155989309001000003",
+              "level": "0",
+              "path": "1155989309001001940:",
+              "workspace_id": "55989309",
+              "attachment_count": "0",
+              "confidential": "N",
+              "creator": "\u9093\u83f2",
+              "ancestor_id": "1155989309001001940",
+              "follower": "",
+              "secret_root_id": "0",
+              "parent_id": "0",
+              "effort_completed": "0",
+              "enable_quickly_transfer": "0",
+              "workitem_type_color": "#3582fb",
+              "workitem_type_english_name": "story",
+              "workitem_type_name": "\u9700\u6c42",
+              "status_alias": "\u6682\u65f6\u6302\u8d77",
+              "relate_story_count": "0",
+              "tree_node_count": "1",
+              "has_sub_task": "0",
+              "iteration_info": "",
+              "secret_workitem": "0",
+              "short_id": "1001940",
+              "parent_name": "",
+              "relative_id": "0",
+              "delay": "0",
+              "is_delay": "0",
+              "_parent_id": "0"
+            }
+          },
+          {
+            "Story": {
+              "id": "1155989309001001939",
+              "name": "Case-\u6cfd\u9ad8226370-001\u5408\u540c\u5df2\u5b8c\u6210\uff0c\u4f46\u8f6c\u6708\u5206\u914d\u4e0d\u4e0a\uff0c\u5408\u540c\u91cc\u4e5f\u6ca1\u6709\u4efb\u4fdd\u64cd\u4f5c\u6309\u94ae\u3002",
+              "priority": "4",
+              "iteration_id": "0",
+              "status": "status_7",
+              "owner": "\u6c88\u7fbd;",
+              "begin": "",
+              "due": "",
+              "children_id": "|",
+              "workitem_type_id": "1155989309001000004",
+              "level": "0",
+              "path": "1155989309001001939:",
+              "workspace_id": "55989309",
+              "attachment_count": "0",
+              "confidential": "N",
+              "creator": "\u6c88\u7fbd",
+              "ancestor_id": "1155989309001001939",
+              "follower": "",
+              "secret_root_id": "0",
+              "parent_id": "0",
+              "effort_completed": "0",
+              "enable_quickly_transfer": "0",
+              "workitem_type_color": "#f85e5e",
+              "workitem_type_english_name": "PrdCase",
+              "workitem_type_name": "\u751f\u4ea7Case",
+              "status_alias": "LDC\u786e\u8ba4\u4e2d",
+              "relate_story_count": "0",
+              "tree_node_count": "1",
+              "has_sub_task": "0",
+              "iteration_info": "",
+              "secret_workitem": "0",
+              "short_id": "1001939",
+              "parent_name": "",
+              "relative_id": "0",
+              "delay": "0",
+              "is_delay": "0",
+              "_parent_id": "0"
+            }
+          },
           {
             "Story": {
               "id": "1155989309001001938",
               "name": "Case-\u5408\u540c\u65e0\u6cd5\u7b7e\u7ae0",
               "priority": "4",
               "iteration_id": "0",
-              "status": "status_3",
+              "status": "status_7",
               "owner": "EvaGao_LDC;",
               "begin": "",
               "due": "",
@@ -28,7 +151,7 @@
               "level": "0",
               "path": "1155989309001001938:",
               "workspace_id": "55989309",
-              "attachment_count": "0",
+              "attachment_count": "1",
               "confidential": "N",
               "creator": "EvaGao_LDC",
               "ancestor_id": "1155989309001001938",
@@ -40,7 +163,7 @@
               "workitem_type_color": "#f85e5e",
               "workitem_type_english_name": "PrdCase",
               "workitem_type_name": "\u751f\u4ea7Case",
-              "status_alias": "FN\u5904\u7406\u4e2d",
+              "status_alias": "LDC\u786e\u8ba4\u4e2d",
               "relate_story_count": "0",
               "tree_node_count": "1",
               "has_sub_task": "0",
@@ -299,129 +422,6 @@
               "is_delay": "0",
               "_parent_id": "0"
             }
-          },
-          {
-            "Story": {
-              "id": "1155989309001001931",
-              "name": "Case-\u5ba2\u6237\u65e0\u6cd5\u7b7e\u7ae0\u5408\u540c TJIBSBMS2301023-002/TJIBSBMS2301022-002",
-              "priority": "4",
-              "iteration_id": "0",
-              "status": "status_7",
-              "owner": "\u674e\u51ac\u6021;",
-              "begin": "",
-              "due": "",
-              "children_id": "|",
-              "workitem_type_id": "1155989309001000004",
-              "level": "0",
-              "path": "1155989309001001931:",
-              "workspace_id": "55989309",
-              "attachment_count": "0",
-              "confidential": "N",
-              "creator": "FL\u949f\u654f\u541b",
-              "ancestor_id": "1155989309001001931",
-              "follower": "",
-              "secret_root_id": "0",
-              "parent_id": "0",
-              "effort_completed": "0",
-              "enable_quickly_transfer": "0",
-              "workitem_type_color": "#f85e5e",
-              "workitem_type_english_name": "PrdCase",
-              "workitem_type_name": "\u751f\u4ea7Case",
-              "status_alias": "LDC\u786e\u8ba4\u4e2d",
-              "relate_story_count": "0",
-              "tree_node_count": "1",
-              "has_sub_task": "0",
-              "iteration_info": "",
-              "secret_workitem": "0",
-              "short_id": "1001931",
-              "parent_name": "",
-              "relative_id": "0",
-              "delay": "0",
-              "is_delay": "0",
-              "_parent_id": "0"
-            }
-          },
-          {
-            "Story": {
-              "id": "1155989309001001930",
-              "name": "Case-\u65b0\u589e\u4ed8\u6b3e\u6761\u6b3e\uff0cLDC\u65e0\u6cd5\u7f16\u8f91\u683c\u5f0f\uff0c\u70e6\u8bf7FN\u5e2e\u5fd9\u51fa\u5177\u81f3\u201c\u5f85\u5ba1\u6838\u201d\u72b6\u6001",
-              "priority": "4",
-              "iteration_id": "0",
-              "status": "status_7",
-              "owner": "\u9a6c\u6674;",
-              "begin": "",
-              "due": "",
-              "children_id": "|",
-              "workitem_type_id": "1155989309001000004",
-              "level": "0",
-              "path": "1155989309001001930:",
-              "workspace_id": "55989309",
-              "attachment_count": "0",
-              "confidential": "N",
-              "creator": "\u9a6c\u6674",
-              "ancestor_id": "1155989309001001930",
-              "follower": "",
-              "secret_root_id": "0",
-              "parent_id": "0",
-              "effort_completed": "0",
-              "enable_quickly_transfer": "0",
-              "workitem_type_color": "#f85e5e",
-              "workitem_type_english_name": "PrdCase",
-              "workitem_type_name": "\u751f\u4ea7Case",
-              "status_alias": "LDC\u786e\u8ba4\u4e2d",
-              "relate_story_count": "0",
-              "tree_node_count": "1",
-              "has_sub_task": "0",
-              "iteration_info": "",
-              "secret_workitem": "0",
-              "short_id": "1001930",
-              "parent_name": "",
-              "relative_id": "0",
-              "delay": "0",
-              "is_delay": "0",
-              "_parent_id": "0"
-            }
-          },
-          {
-            "Story": {
-              "id": "1155989309001001929",
-              "name": "Case-\u822a\u6d77\u5bb6\u7cfb\u7edf\u4ef7\u683c\u5f55\u5165\u9519\u8bef\uff0c\u7533\u8bf7\u64a4\u56de\u5230\u5f85\u6210\u4ea4\u72b6\u6001",
-              "priority": "4",
-              "iteration_id": "0",
-              "status": "status_7",
-              "owner": "\u9648\u6d4e\u4e2d;",
-              "begin": "",
-              "due": "",
-              "children_id": "|",
-              "workitem_type_id": "1155989309001000004",
-              "level": "0",
-              "path": "1155989309001001929:",
-              "workspace_id": "55989309",
-              "attachment_count": "0",
-              "confidential": "N",
-              "creator": "\u9648\u6d4e\u4e2d",
-              "ancestor_id": "1155989309001001929",
-              "follower": "",
-              "secret_root_id": "0",
-              "parent_id": "0",
-              "effort_completed": "0",
-              "enable_quickly_transfer": "0",
-              "workitem_type_color": "#f85e5e",
-              "workitem_type_english_name": "PrdCase",
-              "workitem_type_name": "\u751f\u4ea7Case",
-              "status_alias": "LDC\u786e\u8ba4\u4e2d",
-              "relate_story_count": "0",
-              "tree_node_count": "1",
-              "has_sub_task": "0",
-              "iteration_info": "",
-              "secret_workitem": "0",
-              "short_id": "1001929",
-              "parent_name": "",
-              "relative_id": "0",
-              "delay": "0",
-              "is_delay": "0",
-              "_parent_id": "0"
-            }
           }
         ],
         "status_map": {
@@ -616,19 +616,19 @@
             }
           }
         ],
-        "export_token": "export_cache_a0cc7cf19ebfa8ee25ccca2724676015",
+        "export_token": "export_cache_044dbae3f93c705fefe855ff4032be7b",
         "view_mode": "jump",
         "socket_login_data": {
           "socket_path": "https://spider.tapd.cn/workitems",
           "login_data": {
             "user_nick": "AnthonyChen::886333224",
             "workspace_id": "55989309",
-            "timespan": "1690941326.6964902",
+            "timespan": "1690955329.5771690",
             "data_id": "workitems",
-            "token": "8c25599023fd0d9f9a35f9e3993ee78565e1ae03"
+            "token": "a0275e6ac460258390ee15e7708a5cf4120b42de"
           },
           "room_ids": [
-            "WORKITEMS_CHANGE_stories_list_886333224_1690941326_2987312"
+            "WORKITEMS_CHANGE_stories_list_886333224_1690955329_4910550"
           ],
           "socket_id": "55989309",
           "need_disconnect": "1"
@@ -2300,7 +2300,7 @@
         "workitem_app_map": []
       },
       "meta": { "code": "0", "message": "success" },
-      "timestamp": "1690941326"
+      "timestamp": "1690955329"
     },
     "get_stories_fields": {
       "data": {
@@ -3106,7 +3106,7 @@
         }
       },
       "meta": { "code": "0", "message": "success" },
-      "timestamp": "1690941326"
+      "timestamp": "1690955329"
     },
     "get_steps": {
       "data": {
@@ -3134,7 +3134,7 @@
         "bug_end_steps": { "55989309": ["closed"] }
       },
       "meta": { "code": "0", "message": "success" },
-      "timestamp": "1690941326"
+      "timestamp": "1690955329"
     },
     "get_category_tree": {
       "data": [
@@ -3614,12 +3614,12 @@
         }
       ],
       "meta": { "code": "0", "message": "success" },
-      "timestamp": "1690941326"
+      "timestamp": "1690955329"
     },
     "get_config": {
       "data": "null",
       "meta": { "code": "0", "message": "success" },
-      "timestamp": "1690941326"
+      "timestamp": "1690955329"
     },
     "get_userviews": {
       "data": {
@@ -3737,9 +3737,9 @@
         "remember_switch": "1"
       },
       "meta": { "code": "0", "message": "success" },
-      "timestamp": "1690941326"
+      "timestamp": "1690955329"
     }
   },
   "meta": { "code": 0, "message": "success" },
-  "timestamp": 1690941326
+  "timestamp": 1690955329
 }
