@@ -93,6 +93,14 @@ pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas
 
 To install other packages, replace "pandas" with "package_name"
 
+## 2. 运行时有warning
+> InsecureRequestWarning: Unverified HTTPS request is being made to host 'www.tapd.cn'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+
+在data_utils.py里我把request里verify=false了，true的话会报那个SSL，但是false的话会报这个warning，不知道怎么解决，但是不影响结果，所以就先这样吧
+
+### Solution:
+等一个高人指点
+
 ## Disclaimer
 
 > This script is provided as-is, and it may require adjustments based on your specific needs, such as file names, file locations, and specific business logic. Please use it as a reference and modify it as necessary to suit your requirements.
