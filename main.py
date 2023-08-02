@@ -25,8 +25,8 @@ workspace_id = get_workspace_id()
 # -------- Read the excel file --------
 
 # Assuming your excel file is named 'input.xlsx' and is in the same directory as this script
-df = pd.read_excel('test_all.xlsx')
-# df = pd.read_excel('input.xlsx')
+# df = pd.read_excel('test_all.xlsx')
+df = pd.read_excel('input.xlsx')
 
 # Get the ID range from the user
 id_start = int(input("请填入需要查询的起始ID (i.e. 1001705) Please enter the starting ID: "))
@@ -113,9 +113,9 @@ compliance_rates = pd.DataFrame({
 }, index=['P2', 'P3', 'P4'])
 
 # Append the compliance rates dataframe to the end of each dataframe
-df_high = df_high.append(compliance_rates.loc['P2', :], ignore_index=True)
-df_middle = df_middle.append(compliance_rates.loc['P3', :], ignore_index=True)
-df_low = df_low.append(compliance_rates.loc['P4', :], ignore_index=True)
+df_high = df_high._append(compliance_rates.loc['P2', :], ignore_index=True)
+df_middle = df_middle._append(compliance_rates.loc['P3', :], ignore_index=True)
+df_low = df_low._append(compliance_rates.loc['P4', :], ignore_index=True)
 
 
 # Create a Pandas Excel writer using XlsxWriter as the engine
@@ -129,7 +129,7 @@ df_middle.to_excel(writer, sheet_name='P3', index=False)
 df_low.to_excel(writer, sheet_name='P4', index=False)
 
 # Close the Pandas Excel writer and output the Excel file
-writer.save()
+writer._save()
 
 
 # if nothing goes wrong, should be succeed

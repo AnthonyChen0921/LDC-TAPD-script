@@ -46,7 +46,7 @@ def fetch_data(workspace_id, entity_id, cookie_list):
     }
 
     # Make the request
-    response = requests.get(base_url,  headers=headers)
+    response = requests.get(base_url,  headers=headers, verify=False)
 
     # Parse the JSON response
     data = response.json()
