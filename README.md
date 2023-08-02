@@ -2,7 +2,17 @@
 
 ## Introduction
 
-> This script takes an excel file (expected to be named 'input.xlsx') as an input, reads the information, and generates an output excel file ('output_{start_id}_{end_id}.xlsx') after performing certain operations on the data.
+Email bot 和 达标率计算脚本，用于自动发送邮件和计算达标率。由于TAPD API还是内测阶段，并且貌似FN也没申请使用，所以目前只能用request模拟登录来获取数据。
+
+## 我要跑需求达标率：
+> 1. 打开cmd，cd到这个文件夹
+> 2. 把导出的excel文件放到这个文件夹里，改名为input.xlsx
+> 3. 运行下面的命令，根据提示输入start_id和end_id改成你要跑的范围, 比如我想看看从1001705到1001800之间的，就先输入1001705，然后回车，再输入1001800，回车(前小后大，不然会报错)
+```
+python main.py
+```
+> 4. 等待运行完毕，会在这个文件夹里生成一个output_{start_id}_{end_id}.xlsx的文件，就是你要的结果了
+> 5. 还有一个文件是output_raw.xlsx，是增加了响应时间的原始数据，我不太会用excel所以这个文件可以自行随意操作，不影响结果
 
 
 
@@ -10,7 +20,7 @@
 Make sure your input file is named 'input.xlsx' and it is in the same directory as the script.
 Run the script. It will prompt you to enter a starting ID and ending ID, these should be integer values present in your data. This range of IDs will be used to filter the data.
 
-Use the following command to run the script:
+Use the following command to run the script, 这个是算达标率的，想算的时候跑一下下面的命令:
 
 ```
 python main.py
@@ -58,17 +68,25 @@ The script will prompt you for workspace id after displaying a welcome message. 
 
 
 
-## Troubleshooting
+# Troubleshooting
 
-If you get an error related to missing modules, please install them using pip and try again.
-If you get an error related to file not found, please ensure that the 'test_all.xlsx' and 'cookies.json' files are in the same directory as the script.
-If you get an error related to incorrect data, please check your 'input.xlsx' file for any anomalies.
+## 1. pip install时报错
+> Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1002)'
 
+### Solution:
+> This issue is occurring because the Python pip installer is unable to verify the SSL certificate of the server it's trying to connect to. This is a common issue when connecting to the internet from a corporate network, which might be using a self-signed certificate for securing its internal connections.
 
+>Install Packages without Certificate Verification: This is the simplest but least secure solution. You can use the --trusted-host option with pip to bypass SSL certificate verification. You should only use this option if you're sure the network connection is secure.
+
+```
+pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas
+```
+
+To install other packages, replace "pandas" with "package_name"
 
 ## Disclaimer
 
 > This script is provided as-is, and it may require adjustments based on your specific needs, such as file names, file locations, and specific business logic. Please use it as a reference and modify it as necessary to suit your requirements.
 
 
-Edit by 1nka 2023/8/1, If you have further questions, please contact me.
+Edit by 1nka, If you have further questions, please contact me.
