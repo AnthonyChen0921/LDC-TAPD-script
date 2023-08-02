@@ -4,6 +4,15 @@
 
 Email bot 和 达标率计算脚本，用于自动发送邮件和计算达标率。由于TAPD API还是内测阶段，并且貌似FN也没申请使用，所以目前只能用request模拟登录来获取数据。
 
+## 第一次用
+> 1. 安装python环境，开发的版本是3.11.4, 但是3.6以上应该都可以
+> 2. 安装依赖，打开cmd，cd到这个文件夹，然后运行下面的命令 (出错请移步Trouble shooting)
+```
+pip install pandas requests json time openpyxl
+```
+> 3. 把cookies.json文件放到这个文件夹里，cookies可以在用浏览器登录TAPD后，使用[editThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg)插件导出，然后复制进去
+
+
 ## 我要跑需求达标率：
 > 1. 打开cmd，cd到这个文件夹
 > 2. 把TAPD上导出的excel文件放到这个文件夹里，改名为input.xlsx
