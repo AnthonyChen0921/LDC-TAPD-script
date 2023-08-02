@@ -24,6 +24,7 @@ def main():
         if old_story_data is None:
             continue
 
+        print(f'Checking story {story_id}...')
         if old_story_data['status'] == 'status_3' and story_data['status'] == 'status_7':
             # prepare email content
             subject = f'Story {story_id} Status Change Detected'
@@ -31,6 +32,8 @@ def main():
 
             # send email
             send_email('erdong.chen-ext@ldc.com', subject, body)
+        else:
+            print(f'Story {story_id} has not changed status.')
 
 # run the main function every 60 seconds
 while True:

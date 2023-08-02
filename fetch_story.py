@@ -29,7 +29,7 @@ def fetch_story():
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
     }
 
-    data = {}
+    data = {"workspace_id":"55989309","conf_id":"1155989309001004492","sort_name":"","confIdType":"URL","order":"","perpage":"100","page":1,"query_token":"f7404cf77c01fb0ca5a2d44f21f28fa8","category_id":"0","location":"/prong/stories/stories_list","target":"55989309/story/list","entity_types":["story"],"use_scene":"storyList","list_type":"flat","need_category_counts":1,"menu_workitem_type_id":"","dsc_token":"1OaxKPDD0LFFc93M"}
 
     response = requests.post(url, headers=headers, params=params, data=json.dumps(data), verify=False)
 
