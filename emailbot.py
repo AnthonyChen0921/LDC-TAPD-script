@@ -26,15 +26,9 @@ def main():
 
         print(f'Checking story {story_id}...')
         if old_story_data['status'] == 'status_3' and story_data['status'] == 'status_7':
-            # trim last 7 char of story_id
-            story_id_short = story_id[:-7]
-            # prepare email content
-            subject = f'【ID{story_id_short}】{story_data["name"]}待确认'
-            # 如果对处理结果不满意的，请将“处理人”还原为上一位富农产品/开发/测试的名字，并将状态更新为“FN处理中”。
-            body = f'【ID{story_id_short} ({story_data["name"]}, created by {story_data["creator"]}) has changed its status from "status_3" to "status_7".'
-
             # send email
-            send_email('erdong.chen-ext@ldc.com', subject, body)
+            send_email('erdong.chen-ext@ldc.com', story_data)
+            print(f'Story {story_id} changed status, email already sent.')
         else:
             print(f'Story {story_id} has not changed status.')
 
