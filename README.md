@@ -10,6 +10,10 @@ Email bot 和 达标率计算脚本，用于自动发送邮件和计算达标率
 ```
 pip install pandas requests json time openpyxl xlsxwriter
 ```
+上面的不行run这个
+```
+pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas requests json time openpyxl xlsxwriter
+```
 > 3. 把cookies.json文件放到这个文件夹里，cookies可以在用浏览器登录TAPD后，使用[editThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg)插件导出，然后复制进去
 
 
