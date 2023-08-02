@@ -6,7 +6,7 @@ Email bot 和 达标率计算脚本，用于自动发送邮件和计算达标率
 
 ## 我要跑需求达标率：
 > 1. 打开cmd，cd到这个文件夹
-> 2. 把导出的excel文件放到这个文件夹里，改名为input.xlsx
+> 2. 把TAPD上导出的excel文件放到这个文件夹里，改名为input.xlsx
 > 3. 运行下面的命令，根据提示输入start_id和end_id改成你要跑的范围, 比如我想看看从1001705到1001800之间的，就先输入1001705，然后回车，再输入1001800，回车(前小后大，不然会报错)
 ```
 python main.py
@@ -74,9 +74,9 @@ The script will prompt you for workspace id after displaying a welcome message. 
 > Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1002)'
 
 ### Solution:
-> This issue is occurring because the Python pip installer is unable to verify the SSL certificate of the server it's trying to connect to. This is a common issue when connecting to the internet from a corporate network, which might be using a self-signed certificate for securing its internal connections.
+This issue is occurring because the Python pip installer is unable to verify the SSL certificate of the server it's trying to connect to. This is a common issue when connecting to the internet from a corporate network, which might be using a self-signed certificate for securing its internal connections.
 
->Install Packages without Certificate Verification: This is the simplest but least secure solution. You can use the --trusted-host option with pip to bypass SSL certificate verification. You should only use this option if you're sure the network connection is secure.
+Install Packages without Certificate Verification: This is the simplest but least secure solution. You can use the --trusted-host option with pip to bypass SSL certificate verification. You should only use this option if you're sure the network connection is secure.
 
 ```
 pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas
