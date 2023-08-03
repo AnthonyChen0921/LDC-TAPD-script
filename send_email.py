@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 # https://www.tapd.cn/fastapp/jump.php?target=https%3A%2F%2Fwww.tapd.cn%2F55989309%2Fprong%2Fstories%2Fview%2F{story_data['id']}%3Fjump_count%3D1
 
 
-def send_email(to_email, story_data):
+def send_email(to_emails, cc_emails, story_data):
     # your email credentials
     smtp_server = "smtprelay.ldc.com"
     smtp_port = 25
@@ -31,7 +31,7 @@ def send_email(to_email, story_data):
                             }}
                             .content {{
                                 margin: auto;
-                                width: 60%;
+                                width: 90%;
                                 padding: 10px;
                                 border: 1px solid #ddd;
                                 border-radius: 5px;
@@ -43,51 +43,40 @@ def send_email(to_email, story_data):
                             p {{
                                 color: #666;
                             }}
-                            a {{
-                                color: #3498db;
+                            a.button {{
+                                display: inline-block;
+                                color: white;
+                                background-color: #3498db;
+                                padding: 10px 15px;
+                                text-align: center;
+                                border-radius: 5px;
                                 text-decoration: none;
+                                margin: 10px 0;
                             }}
-                            a:hover {{
-                                color: #2980b9;
+                            a.button:hover {{
+                                background-color: #2980b9;
                             }}
                         </style>
                     </head>
                     <body>
                         <div class="content">
                             <h1>【ID{story_id_short}】{story_data["name"]} - 待确认</h1>
-                            <p>【ID{story_id_short}】 ({story_data["name"]}, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：</p>
-                            <p><a href="{link}">{story_data["name"]}</a></p>
+                            <p>【ID{story_id_short}】 (<p><a href="{link}">{story_data["name"]}</a></p>, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：</p>
+                            <a class="button" href="{link}">点击查看</a>
                             <p>如果对处理结果不满意的, 请将“处理人”还原为上一位富农产品/开发/测试的名字, 并将状态更新为“FN处理中”。</p>
                         </div>
                     </body>
                 </html>
             """
 
-    # body = f"""
-    #     <html>
-    #     <head>
-    #     </head>
-    #     <body style="font-family: Arial, sans-serif;">
-    #         <table style="margin: auto; width: 60%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
-    #             <tr>
-    #                 <td>
-    #                     <h1 style="color: #333;">【ID{story_id_short}】{story_data["name"]} - 待确认</h1>
-    #                     <p style="color: #666;">【ID{story_id_short}】 ({story_data["name"]}, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：</p>
-    #                     <p><a href="{link}" style="color: #3498db; text-decoration: none;">{story_data["name"]}</a></p>
-    #                     <p style="color: #666;">如果对处理结果不满意的, 请将“处理人”还原为上一位富农产品/开发/测试的名字, 并将状态更新为“FN处理中”。</p>
-    #                 </td>
-    #             </tr>
-    #         </table>
-    #     </body>
-    #     </html>
-    #     """
-
+    
 
 
     # create message
     msg = MIMEMultipart()
     msg["From"] = username
-    msg["To"] = to_email
+    msg["To"] = ", ".join(to_emails)
+    msg["Cc"] = ", ".join(cc_emails)
     msg["Subject"] = subject
     msg.attach(MIMEText(body, "html"))
 
@@ -95,9 +84,12 @@ def send_email(to_email, story_data):
         # setup the SMTP server
         server = smtplib.SMTP(smtp_server, smtp_port)
 
+        # list of all recipients
+        all_recipients = to_emails + cc_emails
+
         # send the email
         text = msg.as_string()
-        server.sendmail(username, to_email, text)
+        server.sendmail(username, all_recipients, text)
 
         # close the connection
         server.quit()
