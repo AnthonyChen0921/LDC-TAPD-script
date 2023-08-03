@@ -27,7 +27,6 @@ def main():
         print(f'Checking story {story_id}...')
         if old_story_data['status'] == 'status_3' and story_data['status'] == 'status_7':
             # send email
-            # send email
             to_emails = ['erdong.chen-ext@ldc.com', 'chenerdong0921@gmail.com'] # recipients
             cc_emails = ['erdong.chen-ext@ldc.com'] # CC recipients
 

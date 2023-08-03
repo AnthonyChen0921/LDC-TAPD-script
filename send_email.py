@@ -61,8 +61,9 @@ def send_email(to_emails, cc_emails, story_data):
                     <body>
                         <div class="content">
                             <h1>【ID{story_id_short}】{story_data["name"]} - 待确认</h1>
-                            <p>【ID{story_id_short}】 (<p><a href="{link}">{story_data["name"]}</a></p>, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：</p>
-                            <a class="button" href="{link}">点击查看</a>
+                            <p>【ID{story_id_short}】 ({story_data["name"]}, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：</p>
+                            <p><a href="{link}">{story_data["name"]}</a></p>
+                            <a class="button" href="{link}">查看</a>
                             <p>如果对处理结果不满意的, 请将“处理人”还原为上一位富农产品/开发/测试的名字, 并将状态更新为“FN处理中”。</p>
                         </div>
                     </body>
