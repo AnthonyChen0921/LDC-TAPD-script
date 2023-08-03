@@ -22,16 +22,67 @@ def send_email(to_email, story_data):
 
     # prepare email content
     subject = f'【ID{story_id_short}】{story_data["name"]} - 待确认'
-    body = f"""【ID{story_id_short}】 ({story_data["name"]}, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：
-    
-                <br>
-    
-                {hyperlink_format}
-
-                <br>
-        
-                <p>如果对处理结果不满意的, 请将“处理人”还原为上一位富农产品/开发/测试的名字, 并将状态更新为“FN处理中”。</p>
+    body = f""" 
+                <html>
+                    <head>
+                        <style>
+                            body {{
+                                font-family: Arial, sans-serif;
+                            }}
+                            .content {{
+                                margin: auto;
+                                width: 60%;
+                                padding: 10px;
+                                border: 1px solid #ddd;
+                                border-radius: 5px;
+                                background-color: #f9f9f9;
+                            }}
+                            h1 {{
+                                color: #333;
+                            }}
+                            p {{
+                                color: #666;
+                            }}
+                            a {{
+                                color: #3498db;
+                                text-decoration: none;
+                            }}
+                            a:hover {{
+                                color: #2980b9;
+                            }}
+                        </style>
+                    </head>
+                    <body>
+                        <div class="content">
+                            <h1>【ID{story_id_short}】{story_data["name"]} - 待确认</h1>
+                            <p>【ID{story_id_short}】 ({story_data["name"]}, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：</p>
+                            <p><a href="{link}">{story_data["name"]}</a></p>
+                            <p>如果对处理结果不满意的, 请将“处理人”还原为上一位富农产品/开发/测试的名字, 并将状态更新为“FN处理中”。</p>
+                        </div>
+                    </body>
+                </html>
             """
+
+    # body = f"""
+    #     <html>
+    #     <head>
+    #     </head>
+    #     <body style="font-family: Arial, sans-serif;">
+    #         <table style="margin: auto; width: 60%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+    #             <tr>
+    #                 <td>
+    #                     <h1 style="color: #333;">【ID{story_id_short}】{story_data["name"]} - 待确认</h1>
+    #                     <p style="color: #666;">【ID{story_id_short}】 ({story_data["name"]}, created by {story_data["creator"]}) 已从 "FN处理中" 变更为 "LDC确认中". 请尽快前往确认：</p>
+    #                     <p><a href="{link}" style="color: #3498db; text-decoration: none;">{story_data["name"]}</a></p>
+    #                     <p style="color: #666;">如果对处理结果不满意的, 请将“处理人”还原为上一位富农产品/开发/测试的名字, 并将状态更新为“FN处理中”。</p>
+    #                 </td>
+    #             </tr>
+    #         </table>
+    #     </body>
+    #     </html>
+    #     """
+
+
 
     # create message
     msg = MIMEMultipart()
