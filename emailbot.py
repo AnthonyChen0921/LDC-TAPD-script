@@ -3,6 +3,10 @@ import json
 from fetch_story import fetch_story
 from send_email import send_email
 
+def load_email_map(file_path):
+    with open(file_path, 'r') as f:
+        return json.load(f)
+
 def main():
     # load the previously fetched data
     try:
@@ -10,6 +14,7 @@ def main():
             old_data = json.load(file)
     except FileNotFoundError:
         old_data = {}
+
 
     # fetch the current data
     current_data_dict = fetch_story()
@@ -27,12 +32,18 @@ def main():
         print(f'Checking story {story_id}...')
         if old_story_data['status'] == 'status_3' and story_data['status'] == 'status_7':
             # send email
-            to_emails = ['erdong.chen-ext@ldc.com', 'chenerdong0921@gmail.com'] # recipients
-            cc_emails = ['erdong.chen-ext@ldc.com'] # CC recipients
+            # Load email mapping
+            email_map = load_email_map('contact.json')  # replace with the correct path to your JSON file
 
-            send_email(to_emails, cc_emails, story_data)
-    
-            print(f'Story {story_id} changed status, email already sent.')
+            # Get the recipient emails from the mapping
+            recipient_emails = [email_map.get(creator) for creator in story_data["creator"] if creator in email_map]
+
+            # Ensure there are recipients to send the email to
+            if recipient_emails:
+                cc_emails = ['erdong.chen-ext@ldc.com'] # CC recipients
+                send_email(recipient_emails, cc_emails, story_data)
+            else:
+                print(f"No recipients found for creators: {story_data['creator']}")
         else:
             print(f'Story {story_id} has not changed status.')
 
