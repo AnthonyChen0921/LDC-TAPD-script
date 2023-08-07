@@ -4,8 +4,10 @@
 
 Email bot 和 达标率计算脚本，用于自动发送邮件和计算达标率。由于TAPD API还是内测阶段，并且貌似FN也没申请使用，所以目前只能用request模拟登录来获取数据。
 
+btw, i invernted a wheel since TAPD has a built-in feature to send email notifications.
+
 ## 第一次用
-> 1. 安装python环境，开发的版本是3.11.4, 但是3.6以上应该都可以
+> 1. 安装python环境，开发的版本是3.11.4, 但是3.7以上应该都可以
 > 2. 安装依赖，打开cmd，cd到这个文件夹，然后运行下面的命令 (出错请移步Trouble shooting)
 ```
 pip install pandas requests json time openpyxl xlsxwriter
@@ -33,7 +35,7 @@ python main.py
 Make sure your input file is named 'input.xlsx' and it is in the same directory as the script.
 Run the script. It will prompt you to enter a starting ID and ending ID, these should be integer values present in your data. This range of IDs will be used to filter the data.
 
-Use the following command to run the script, 这个是算达标率的，想算的时候跑一下下面的命令:
+Use the following command to run the script, 
 
 ```
 python main.py
@@ -102,8 +104,6 @@ To install other packages, replace "pandas" with "package_name"
 
 在data_utils.py里我把request里verify=false了，true的话会报那个SSL，但是false的话会报这个warning，不知道怎么解决，但是不影响结果，所以就先这样吧
 
-### Solution:
-等一个高人指点
 
 ## Disclaimer
 
