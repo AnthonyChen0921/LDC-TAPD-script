@@ -7,7 +7,7 @@ import pandas as pd
 from datetime import datetime
 from data_utils import fetch_data, get_earliest_time, fetch_and_get_earliest_time
 from utils import welcome_message, get_workspace_id
-from fetch_history import get_FNToLDC_Date
+from fetch_history import getDate_FNToLDC
 
 
 # -------- Main --------
@@ -42,7 +42,7 @@ df = df[(df['ID'] >= id_start) & (df['ID'] <= id_end)]
 for i, row in df.iterrows():
     entity_id = str(row['ID'])
     earliest_time = fetch_and_get_earliest_time(workspace_id, entity_id, cookie_list, fallback_date=row['完成时间'])
-    done_time = get_FNToLDC_Date(workspace_id, entity_id, cookie_list)
+    done_time = getDate_FNToLDC(entity_id)
 
     # Add the earliest time to the '响应时间' column of the current row
     df.loc[i, '响应时刻'] = earliest_time
@@ -63,7 +63,7 @@ for i, row in df.iterrows():
     print(f"{entity_id} completed, processing next request...")
 
     # Pause for a while to avoid hitting API rate limits
-    time.sleep(0.05) 
+    time.sleep(0.5) 
 
 
 # Save the updated dataframe to a new excel file
