@@ -7,6 +7,7 @@ import pandas as pd
 from datetime import datetime
 from data_utils import fetch_data, get_earliest_time, fetch_and_get_earliest_time
 from utils import welcome_message, get_workspace_id
+from fetch_history import get_FNToLDC_Date
 
 
 # -------- Main --------
@@ -41,9 +42,11 @@ df = df[(df['ID'] >= id_start) & (df['ID'] <= id_end)]
 for i, row in df.iterrows():
     entity_id = str(row['ID'])
     earliest_time = fetch_and_get_earliest_time(workspace_id, entity_id, cookie_list, fallback_date=row['完成时间'])
+    done_time = get_FNToLDC_Date(workspace_id, entity_id, cookie_list)
 
     # Add the earliest time to the '响应时间' column of the current row
     df.loc[i, '响应时刻'] = earliest_time
+    df.loc[i, '完成时刻'] = done_time
 
     # Convert date to string if earliest_time is not None
     if earliest_time is not None:
@@ -64,7 +67,7 @@ for i, row in df.iterrows():
 
 
 # Save the updated dataframe to a new excel file
-df.to_excel(f"output_raw.xlsx", index=False)
+df.to_excel(f"output_raw.xlsx")
 
 # -------- Add additional columns --------
 # Convert '创建时间' and '完成时间' to datetime format if they are not
