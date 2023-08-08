@@ -71,7 +71,7 @@ def getDate_FNToLDC(entity_id):
 
     url = f"https://www.tapd.cn/55989309/prong/workitems/changes_list?perPage=10&workitem_type=story&workitem_id=115598930900{entity_id}&containerid=Revisions_div&tableclass=g_table&time=1691463553264"
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, verify=False)
 
 
     if response.status_code == 200:

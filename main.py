@@ -63,7 +63,7 @@ for i, row in df.iterrows():
     print(f"{entity_id} completed, processing next request...")
 
     # Pause for a while to avoid hitting API rate limits
-    time.sleep(0.5) 
+    time.sleep(3) 
 
 
 # Save the updated dataframe to a new excel file
