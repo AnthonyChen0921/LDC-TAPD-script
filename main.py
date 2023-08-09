@@ -43,7 +43,7 @@ df = df[(df['ID'] >= id_start) & (df['ID'] <= id_end)]
 for i, row in df.iterrows():
     entity_id = str(row['ID'])
     earliest_time = fetch_and_get_earliest_time(workspace_id, entity_id, cookie_list, fallback_date=row['完成时间'])
-    done_time = getDate_FNToLDC(entity_id)
+    done_time = getDate_FNToLDC(workspace_id, entity_id, cookie_list)
 
     # Add the earliest time to the '响应时间' column of the current row
     df.loc[i, '响应时刻'] = earliest_time

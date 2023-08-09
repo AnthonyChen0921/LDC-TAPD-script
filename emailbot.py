@@ -35,17 +35,15 @@ def main():
             # Load email mapping
             email_map = load_email_map('contact.json')  # replace with the correct path to your JSON file
 
-            # Get the recipient emails from the mapping
-            recipient_emails = [email_map.get(creator) for creator in story_data["creator"] if creator in email_map]
+            # find the recipent emails from owner
+            recipient_emails = email_map.get(story_data['owner'])
 
             # Ensure there are recipients to send the email to
             if recipient_emails:
                 cc_emails = ['erdong.chen-ext@ldc.com'] # CC recipients
-                send_email(recipient_emails, cc_emails, story_data)
+                send_email([recipient_emails], cc_emails, story_data)
             else:
-                print(f"No recipients found for creators: {story_data['creator']}")
-        else:
-            print(f'Story {story_id} has not changed status.')
+                print(f"No recipients found for owner: {story_data['owner']}")
 
 # run the main function every 60 seconds
 while True:

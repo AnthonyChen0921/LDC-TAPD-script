@@ -32,13 +32,10 @@ def find_nearest_time(soup):
     return None
 
 
-def getDate_FNToLDC(entity_id):
-    # Load the cookies from the file
-    with open('cookies.json', 'r') as f:
-        cookie_list = json.load(f)
+def getDate_FNToLDC(workspace_id, entity_id, cookie_list):
 
     # Convert the list of cookie dictionaries to a string format
-        cookies = "; ".join([f"{c['name']}={c['value']}" for c in cookie_list])
+    cookies = "; ".join([f"{c['name']}={c['value']}" for c in cookie_list])
 
     # entity_id = "1001942"
     # Define headers
@@ -50,7 +47,7 @@ def getDate_FNToLDC(entity_id):
         "Cookie": cookies,
         "P3p": 'CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"',
         "Tapd-Request-Name": "workitems::changes_list",
-        "Tapd-Workspace-Id": "55989309",
+        "Tapd-Workspace-Id": workspace_id,
         "X-Powered-By": "PHP/7.2.25",
         "Accept": "text/html, */*; q=0.01",
         "Accept-Encoding": "gzip, deflate, br",
@@ -58,7 +55,7 @@ def getDate_FNToLDC(entity_id):
         "Cache-Control": "no-cache",
         "Host": "www.tapd.cn",
         "Pragma": "no-cache",
-        "Referer": f"https://www.tapd.cn/55989309/prong/stories/view/115598930900{entity_id}",
+        "Referer": f"https://www.tapd.cn/{workspace_id}/prong/stories/view/115598930900{entity_id}",
         "Sec-Ch-Ua": '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
         "Sec-Ch-Ua-Mobile": "?0",
         "Sec-Ch-Ua-Platform": '"macOS"',
@@ -69,7 +66,7 @@ def getDate_FNToLDC(entity_id):
         "X-Requested-With": "XMLHttpRequest"
     }
 
-    url = f"https://www.tapd.cn/55989309/prong/workitems/changes_list?perPage=10&workitem_type=story&workitem_id=115598930900{entity_id}&containerid=Revisions_div&tableclass=g_table&time=1691463553264"
+    url = f"https://www.tapd.cn/{workspace_id}/prong/workitems/changes_list?perPage=10&workitem_type=story&workitem_id=115598930900{entity_id}&containerid=Revisions_div&tableclass=g_table&time=1691463553264"
 
     response = requests.get(url, headers=headers, verify=False)
 
