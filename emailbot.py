@@ -7,21 +7,29 @@ def load_email_map(file_path):
     with open(file_path, 'r') as f:
         return json.load(f)
 
+def to_escaped_unicode(string):
+    """
+    Convert a string to its escaped Unicode representation.
+    """
+    return string.encode('unicode_escape').decode('utf-8')
 
 def update_contact_json(owner_name, path='contact.json'):
     """
-    Update the contact.json file with a new owner and empty email.
+    Update the contact.json file with a new owner in its escaped Unicode form and empty email.
     """
+    unicode_owner = to_escaped_unicode(owner_name)
+
     with open(path, 'r+', encoding='utf-8') as f:
         data = json.load(f)
         # Add the new owner to the dictionary with an empty email
-        data[owner_name] = ""
+        data[unicode_owner] = ""
         # Reset the file position to the beginning
         f.seek(0)
         # Save the updated dictionary back to the file
         json.dump(data, f, ensure_ascii=False)
         # Truncate the file to remove any leftover content
         f.truncate()
+
 
 
 def main():
@@ -65,9 +73,9 @@ def main():
                     recipient_emails.append(emails)
                     print(f"Found recipients for owner: {owner}")
                 else:
-                    # If owner not found, update the contact.json with the owner's name in unicode
+                    # If owner not found, update the contact.json with the owner's name in escaped unicode
                     update_contact_json(owner)
-                    print(f"⚠️ No recipients found for owner: {owner}. Added to contact.json")
+                    print(f"⚠️ No recipients found for owner: {owner}. Added to contact.json in Unicode format")
 
             print(f"Found recipient emails: {recipient_emails}")
             # Ensure there are recipients to send the email to
@@ -76,6 +84,7 @@ def main():
                 send_email(recipient_emails, cc_emails, story_data)
             else:
                 print("No recipients found for the given owners.")
+
 
 
 
