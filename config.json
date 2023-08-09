@@ -1,0 +1,24 @@
+{
+    "file_names": {
+        "cookie_file": "cookies.json",
+        "input_file": "input.xlsx",
+        "output_folder": "output"
+    },
+    "api": {
+        "sleep_time": 3
+    },
+    "compliance_criteria": {
+        "high": {
+            "response": 4,
+            "resolution": 24
+        },
+        "middle": {
+            "response": 8,
+            "resolution": 72
+        },
+        "low": {
+            "response": 16,
+            "resolution": 144
+        }
+    }
+}

@@ -10,14 +10,16 @@ from data_utils import fetch_data, get_earliest_time, fetch_and_get_earliest_tim
 from utils import welcome_message, get_workspace_id
 from fetch_history import getDate_FNToLDC
 
+# -------- Config -------
+# Load configurations from the config.json file
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
 
 # -------- Main --------
-
-
 # Load the cookies from the file
-with open('cookies.json', 'r') as f:
+with open(config['file_names']['cookie_file'], 'r') as f:
     cookie_list = json.load(f)
-
 
 # -------- Welcome message & Config --------
 welcome_message()
@@ -25,10 +27,9 @@ workspace_id = get_workspace_id()
 
 
 # -------- Read the excel file --------
-
 # Assuming your excel file is named 'input.xlsx' and is in the same directory as this script
-# df = pd.read_excel('test_all.xlsx')
-df = pd.read_excel('input.xlsx')
+# Read the excel file
+df = pd.read_excel(config['file_names']['input_file'])
 
 # Get the ID range from the user
 id_start = int(input("请填入需要查询的起始ID (i.e. 1001705) Please enter the starting ID: "))
@@ -36,7 +37,6 @@ id_end = int(input("请填入需要查询的结束ID (i.e. 1001800)Please enter 
 
 # Filter the dataframe based on the given ID range
 df = df[(df['ID'] >= id_start) & (df['ID'] <= id_end)]
-
 
 # -------- Add 响应时间 column to the dataframe --------
 # Iterate over each ID in the dataframe
@@ -64,7 +64,8 @@ for i, row in df.iterrows():
     print(f"{entity_id} completed, processing next request...")
 
     # Pause for a while to avoid hitting API rate limits
-    time.sleep(3) 
+    # The sleep time
+    time.sleep(config['api']['sleep_time'])
 
 
 # Save the updated dataframe to a new excel file
@@ -89,15 +90,16 @@ df_high = df[df['优先级'] == 'High'].copy()
 df_middle = df[df['优先级'] == 'Middle'].copy()
 df_low = df[df['优先级'] == 'Low'].copy()
 
+
 # Set different compliance criteria for each priority level
-df_high['响应时间达标'] = df_high['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 4 else 'N')  # 1 hour = 60 minutes
-df_high['解决时间达标'] = df_high['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 24 else 'N')  # 8 hours = 480 minutes
+df_high['响应时间达标'] = df_high['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= config['compliance_criteria']['high']['response'] else 'N')  # 1 hour = 60 minutes
+df_high['解决时间达标'] = df_high['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= config['compliance_criteria']['high']['resolution'] else 'N')  # 8 hours = 480 minutes
 
-df_middle['响应时间达标'] = df_middle['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 8 else 'N')  # 1 hour = 60 minutes
-df_middle['解决时间达标'] = df_middle['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 72 else 'N')  # 24 hours = 1440 minutes
+df_middle['响应时间达标'] = df_middle['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= config['compliance_criteria']['middle']['response'] else 'N')  # 1 hour = 60 minutes
+df_middle['解决时间达标'] = df_middle['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= config['compliance_criteria']['middle']['resolution'] else 'N')  # 24 hours = 1440 minutes
 
-df_low['响应时间达标'] = df_low['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 16 else 'N')  # 1 hour = 60 minutes
-df_low['解决时间达标'] = df_low['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 144 else 'N')  # 72 hours = 4320 minutes
+df_low['响应时间达标'] = df_low['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= config['compliance_criteria']['low']['response'] else 'N') # 1 hour = 60 minutes
+df_low['解决时间达标'] = df_low['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= config['compliance_criteria']['low']['resolution'] else 'N')  # 72 hours = 4320 minutes
 
 # ---------- Calculating the percentage -----------------
 # Define a function to calculate compliance rate (percentage) and format it
