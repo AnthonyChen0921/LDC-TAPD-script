@@ -1,5 +1,6 @@
 import json
 import time
+import os
 import requests
 import pandas as pd
 
@@ -67,16 +68,17 @@ for i, row in df.iterrows():
 
 
 # Save the updated dataframe to a new excel file
-df.to_excel(f"output_raw.xlsx")
+df.to_excel(f"output/output_raw.xlsx")
 
 # -------- Add additional columns --------
 # Convert '创建时间' and '完成时间' to datetime format if they are not
 df['创建时间'] = pd.to_datetime(df['创建时间'])
 df['完成时间'] = pd.to_datetime(df['完成时间'])
 df['响应时刻'] = pd.to_datetime(df['响应时刻'])
+df['完成时刻'] = pd.to_datetime(df['完成时刻'])
 # Calculate the time differences
 df['响应时间_diff'] = df['响应时刻'] - df['创建时间']
-df['解决时间_diff'] = df['完成时间'] - df['创建时间']
+df['解决时间_diff'] = df['完成时刻'] - df['创建时间']
 
 # Convert timedelta to "Hour:Minute" string
 df['响应时间_diff'] = df['响应时间_diff'].apply(lambda x: str(int(x.total_seconds() // 3600)).zfill(2) + ":" + str(int((x.total_seconds() // 60) % 60)).zfill(2) if pd.notnull(x) else 'N/A')
@@ -88,14 +90,14 @@ df_middle = df[df['优先级'] == 'Middle'].copy()
 df_low = df[df['优先级'] == 'Low'].copy()
 
 # Set different compliance criteria for each priority level
-df_high['响应时间达标'] = df_high['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 1 else 'N')  # 1 hour = 60 minutes
-df_high['解决时间达标'] = df_high['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 8 else 'N')  # 8 hours = 480 minutes
+df_high['响应时间达标'] = df_high['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 4 else 'N')  # 1 hour = 60 minutes
+df_high['解决时间达标'] = df_high['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 24 else 'N')  # 8 hours = 480 minutes
 
-df_middle['响应时间达标'] = df_middle['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 1 else 'N')  # 1 hour = 60 minutes
-df_middle['解决时间达标'] = df_middle['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 24 else 'N')  # 24 hours = 1440 minutes
+df_middle['响应时间达标'] = df_middle['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 8 else 'N')  # 1 hour = 60 minutes
+df_middle['解决时间达标'] = df_middle['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 72 else 'N')  # 24 hours = 1440 minutes
 
-df_low['响应时间达标'] = df_low['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 1 else 'N')  # 1 hour = 60 minutes
-df_low['解决时间达标'] = df_low['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 72 else 'N')  # 72 hours = 4320 minutes
+df_low['响应时间达标'] = df_low['响应时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 16 else 'N')  # 1 hour = 60 minutes
+df_low['解决时间达标'] = df_low['解决时间_diff'].apply(lambda x: 'Y' if x != 'N/A' and int(x.split(":")[0]) <= 144 else 'N')  # 72 hours = 4320 minutes
 
 # ---------- Calculating the percentage -----------------
 # Define a function to calculate compliance rate (percentage) and format it
@@ -120,9 +122,12 @@ df_high = df_high._append(compliance_rates.loc['P2', :], ignore_index=True)
 df_middle = df_middle._append(compliance_rates.loc['P3', :], ignore_index=True)
 df_low = df_low._append(compliance_rates.loc['P4', :], ignore_index=True)
 
+# create a folder 
+if not os.path.exists('output'):
+    os.makedirs('output')
 
 # Create a Pandas Excel writer using XlsxWriter as the engine
-writer = pd.ExcelWriter(f"output_{id_start}_{id_end}.xlsx", engine='xlsxwriter')
+writer = pd.ExcelWriter(f"output/output_{id_start}_{id_end}.xlsx", engine='xlsxwriter')
 
 # Write the entire dataframe to a sheet named 'ALL'
 df.to_excel(writer, sheet_name='ALL', index=False)
