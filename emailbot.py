@@ -35,15 +35,25 @@ def main():
             # Load email mapping
             email_map = load_email_map('contact.json')  # replace with the correct path to your JSON file
 
-            # find the recipent emails from owner
-            recipient_emails = email_map.get(story_data['owner'])
+            # Parse the owners and remove any empty strings after splitting
+            owners = [owner.strip() for owner in story_data['owner'].split(';') if owner.strip()]
+
+            recipient_emails = []
+            for owner in owners:
+                # find the recipient emails for each owner
+                emails = email_map.get(owner)
+                if emails:
+                    recipient_emails.extend(emails)
+                else:
+                    print(f"No recipients found for owner: {owner}")
 
             # Ensure there are recipients to send the email to
             if recipient_emails:
                 cc_emails = ['erdong.chen-ext@ldc.com'] # CC recipients
-                send_email([recipient_emails], cc_emails, story_data)
+                send_email(recipient_emails, cc_emails, story_data)
             else:
-                print(f"No recipients found for owner: {story_data['owner']}")
+                print("No recipients found for the given owners.")
+
 
 # run the main function every 60 seconds
 while True:
