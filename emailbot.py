@@ -7,29 +7,6 @@ def load_email_map(file_path):
     with open(file_path, 'r') as f:
         return json.load(f)
 
-def to_escaped_unicode(string):
-    """
-    Convert a string to its escaped Unicode representation.
-    """
-    return string.encode('unicode_escape').decode('utf-8')
-
-def update_contact_json(owner_name, path='contact.json'):
-    """
-    Update the contact.json file with a new owner in its escaped Unicode form and empty email.
-    """
-    unicode_owner = to_escaped_unicode(owner_name)
-
-    with open(path, 'r+', encoding='utf-8') as f:
-        data = json.load(f)
-        # Add the new owner to the dictionary with an empty email
-        data[unicode_owner] = ""
-        # Reset the file position to the beginning
-        f.seek(0)
-        # Save the updated dictionary back to the file
-        json.dump(data, f, ensure_ascii=False)
-        # Truncate the file to remove any leftover content
-        f.truncate()
-
 
 
 def main():
@@ -58,7 +35,7 @@ def main():
         if old_story_data['status'] == 'status_3' and story_data['status'] == 'status_7':
             # send email
             # Load email mapping
-            email_map = load_email_map('contact.json')
+            email_map = load_email_map('contact.json')  # replace with the correct path to your JSON file
 
             # Parse the owners and remove any empty strings after splitting
             owners = [owner.strip() for owner in story_data['owner'].split(';') if owner.strip()]
@@ -69,23 +46,20 @@ def main():
                 # find the recipient emails for each owner
                 emails = email_map.get(owner)
                 if emails:
-                    # add email to the list
+                    # add email to ths list
                     recipient_emails.append(emails)
                     print(f"Found recipients for owner: {owner}")
                 else:
-                    # If owner not found, update the contact.json with the owner's name in escaped unicode
-                    update_contact_json(owner)
-                    print(f"⚠️ No recipients found for owner: {owner}. Added to contact.json in Unicode format")
+                    # print unicode char for owner
+                    print(f"⚠️ No recipients found for owner: {owner}")
 
             print(f"Found recipient emails: {recipient_emails}")
             # Ensure there are recipients to send the email to
-            if recipient_emails:
+            if recipient_emails != []:
                 cc_emails = ['erdong.chen-ext@ldc.com'] # CC recipients
                 send_email(recipient_emails, cc_emails, story_data)
             else:
                 print("No recipients found for the given owners.")
-
-
 
 
 # run the main function every 60 seconds
