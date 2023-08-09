@@ -37,18 +37,23 @@ def main():
 
             # Parse the owners and remove any empty strings after splitting
             owners = [owner.strip() for owner in story_data['owner'].split(';') if owner.strip()]
+            print(f"Found owners: {owners}")
 
             recipient_emails = []
             for owner in owners:
                 # find the recipient emails for each owner
                 emails = email_map.get(owner)
                 if emails:
-                    recipient_emails.extend(emails)
+                    # add email to ths list
+                    recipient_emails.append(emails)
+                    print(f"Found recipients for owner: {owner}")
                 else:
-                    print(f"No recipients found for owner: {owner}")
+                    # print unicode char for owner
+                    print(f"⚠️ No recipients found for owner: {owner}")
 
+            print(f"Found recipient emails: {recipient_emails}")
             # Ensure there are recipients to send the email to
-            if recipient_emails:
+            if recipient_emails != []:
                 cc_emails = ['erdong.chen-ext@ldc.com'] # CC recipients
                 send_email(recipient_emails, cc_emails, story_data)
             else:
