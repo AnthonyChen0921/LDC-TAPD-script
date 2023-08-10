@@ -5,7 +5,7 @@ import json
 with open('cookies.json', 'r') as f:
     cookie_list = json.load(f)
 
-def fetch_story(workspace_id, cookie_list):
+def fetch_story(workspace_id, cookie_list, page):
     # Convert the list of cookie dictionaries to a string format
     cookies = "; ".join([f"{c['name']}={c['value']}" for c in cookie_list])
 
@@ -43,7 +43,7 @@ def fetch_story(workspace_id, cookie_list):
         "confIdType": "URL",
         "order": "",
         "perpage": 100,
-        "page": 1,
+        "page": page,
         "query_token": "d4b7ab949c883a3890cff3254503140d",
         "category_id": "1155989309001000006",
         "location": "/prong/stories/stories_list",
