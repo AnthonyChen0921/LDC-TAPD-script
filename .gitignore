@@ -3,3 +3,9 @@ __pycache__/fetch_story.cpython-37.pyc
 .gitignore
 __pycache__/send_email.cpython-311.pyc
 ~$output_1001808_1001957.xlsx
+__pycache__/change_owner.cpython-311.pyc
+__pycache__/classify_story.cpython-311.pyc
+__pycache__/fetch_story_unclassified.cpython-311.pyc
+__pycache__/fetch_story.cpython-311.pyc
+__pycache__/send_email.cpython-311.pyc
+emailbot.log
