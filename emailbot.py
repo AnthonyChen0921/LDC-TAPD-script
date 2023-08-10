@@ -130,14 +130,19 @@ def email():
             else:
                 logging.warning("No recipients found for the given owners.")
 
-# run the main function every sleep_time seconds
-while True:
-    if config["control_flags"]["email"]:
-        email()
-    if config["control_flags"]["classify"]:
-        classify()
-    if config["control_flags"]["autoClose"]:
-        autoClose()
-    if config["control_flags"]["autoFillOwner"]:
-        autoFillOwner()
-    time.sleep(config['api']['sleep_time'])
+try:
+    # run the main function every sleep_time seconds
+    while True:
+        if config["control_flags"]["email"]:
+            email()
+        if config["control_flags"]["classify"]:
+            classify()
+        if config["control_flags"]["autoClose"]:
+            autoClose()
+        if config["control_flags"]["autoFillOwner"]:
+            autoFillOwner()
+        time.sleep(config['api']['sleep_time'])
+except Exception as e:
+    logging.error(f"Script crashed with error: {str(e)}")
+    # Optionally re-raise the exception if you want to see the traceback or debug it
+    # raise e
