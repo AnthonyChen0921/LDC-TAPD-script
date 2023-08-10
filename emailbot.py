@@ -7,6 +7,7 @@ from send_email import send_email
 from classify_story import classify_story
 from fetch_story_unclassified import fetch_story_unclassified
 from change_owner import change_owner
+from close_story import close_story
 
 
 # Configuring logging
