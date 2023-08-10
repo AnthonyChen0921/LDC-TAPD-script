@@ -131,6 +131,7 @@ def email():
                 logging.warning("No recipients found for the given owners.")
 
 try:
+    logging.info(f"Starting script at {datetime.datetime.now()}")  # Logging the start of the script
     # run the main function every sleep_time seconds
     while True:
         if config["control_flags"]["email"]:
