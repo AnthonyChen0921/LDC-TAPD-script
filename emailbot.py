@@ -1,10 +1,18 @@
 import time
 import json
+import logging
 import datetime
 from fetch_story import fetch_story
 from send_email import send_email
 from classify_story import classify_story
 from fetch_story_unclassified import fetch_story_unclassified
+
+# Configuring logging
+logging.basicConfig(filename="emailbot.log", 
+                    format='%(asctime)s [%(levelname)s]: %(message)s', 
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    level=logging.INFO)  # Change to logging.DEBUG for more detailed logs
+
 
 # Load configuration from config.json
 with open('config.json', 'r') as f:
@@ -34,6 +42,7 @@ def autoClose():
         modified_date = datetime.datetime.strptime(story_data['modified'], "%Y-%m-%d %H:%M:%S")
         
         if modified_date < threshold_date:
+            logging.info(f"Closing story {story_id}")  # Logging the auto close action
             print(story_id)
 
 def classify():
@@ -49,6 +58,7 @@ def classify():
         story_name = story_data.get('name', '')
         if story_name.startswith("Case-"):
             print(f"not classified {story_id} and {story_data}")
+            logging.info(f"Classifying story {story_id} with data {story_data}")  # Logging the classification
             classify_story(workspace_id, story_id, cookie_list)
 
 def email():
@@ -93,9 +103,10 @@ def email():
             print(f"Found recipient emails: {recipient_emails}")
             if recipient_emails:
                 cc_emails = ['erdong.chen-ext@ldc.com']
+                logging.info(f"Sending email to {recipient_emails} with CC {cc_emails} for story {story_data['id']}")  # Logging the email action
                 send_email(recipient_emails, cc_emails, story_data)
             else:
-                print("No recipients found for the given owners.")
+                logging.warning("No recipients found for the given owners.")
 
 # run the main function every sleep_time seconds
 while True:
