@@ -77,8 +77,8 @@ def classify():
     for story_id, story_data in stories_data.items():
         story_name = story_data.get('name', '')
         if story_name.startswith("Case-"):
-            print(f"not classified {story_id} and {story_data}")
-            logging.info(f"Classifying story {story_id} with data {story_data}")  # Logging the classification
+            print(f"not classified {story_id} and {story_name}")
+            logging.info(f"Classifying story {story_id} with data {story_name}")  # Logging the classification
             classify_story(workspace_id, story_id, cookie_list)
 
 def email():
