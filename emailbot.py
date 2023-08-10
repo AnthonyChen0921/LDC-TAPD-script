@@ -98,6 +98,7 @@ def email():
                     recipient_emails.append(emails)
                     print(f"Found recipients for owner: {owner}")
                 else:
+                    logging.warning(f"No recipients found for for owner: {owner}. Consider add to contact.json manually")
                     print(f"⚠️ No recipients found for owner: {owner}")
 
             print(f"Found recipient emails: {recipient_emails}")

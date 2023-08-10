@@ -27,7 +27,7 @@
     "control_flags": {
         "email": 1,
         "classify": 1,
-        "autoClose": 1
+        "autoClose": 0
     },
     "workspace_id": "55989309",
     "threshold_days": 30

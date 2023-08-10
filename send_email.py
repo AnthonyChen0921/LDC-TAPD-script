@@ -4,6 +4,13 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+import logging
+# Configuring logging
+logging.basicConfig(filename="emailbot.log", 
+                    format='%(asctime)s [%(levelname)s]: %(message)s', 
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    level=logging.INFO)  # Change to logging.DEBUG for more detailed logs
+
 # https://www.tapd.cn/fastapp/jump.php?target=https%3A%2F%2Fwww.tapd.cn%2F55989309%2Fprong%2Fstories%2Fview%2F{story_data['id']}%3Fjump_count%3D1
 
 
