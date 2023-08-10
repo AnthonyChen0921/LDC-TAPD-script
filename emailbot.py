@@ -6,6 +6,8 @@ from fetch_story import fetch_story
 from send_email import send_email
 from classify_story import classify_story
 from fetch_story_unclassified import fetch_story_unclassified
+from change_owner import change_owner
+
 
 # Configuring logging
 logging.basicConfig(filename="emailbot.log", 
@@ -43,7 +45,25 @@ def autoClose():
         
         if modified_date < threshold_date:
             logging.info(f"Closing story {story_id}")  # Logging the auto close action
-            print(story_id)
+            close_story(workspace_id, story_id, cookie_list)
+
+def autoFillOwner():
+    # load the previously fetched data
+    try:
+        with open(config['file_names']['story_file'], 'r') as file:
+            stories = json.load(file)
+    except FileNotFoundError:
+        stories = {}
+
+    # Check for empty owners and print them
+    for story_id, story_data in stories.items():
+        owner = story_data.get('owner', '').strip()  # get the owner and strip any whitespace
+        creator = story_data.get('creator', 'Unknown creator')  # get the creator or default to 'Unknown creator' if not present
+        if not owner:  # check if owner is empty
+            print(f"Story ID {story_id} has an empty owner. Created by {creator}.")
+            logging.info(f"Assigning owner of story {story_id} with creator {creator}")  # Logging the assignment
+            change_owner(workspace_id, story_id, cookie_list, creator)
+
 
 def classify():
     # fetch unclassified data
@@ -117,4 +137,6 @@ while True:
         classify()
     if config["control_flags"]["autoClose"]:
         autoClose()
+    if config["control_flags"]["autoFillOwner"]:
+        autoFillOwner()
     time.sleep(config['api']['sleep_time'])

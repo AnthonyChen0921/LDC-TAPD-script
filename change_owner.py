@@ -6,9 +6,9 @@ with open('cookies.json', 'r') as f:
     cookie_list = json.load(f)
 
 
-def classify_story(workspace_id, entity_id, cookie_list):
+def change_owner(workspace_id, entity_id, cookie_list, owner_name):
     # Set the URL
-    url = f"https://www.tapd.cn/{workspace_id}/prong/stories/inline_update?r=1691630428334"
+    url = f"https://www.tapd.cn/{workspace_id}/prong/stories/inline_update?r=1691649233744"
 
     # Convert the list of cookie dictionaries to a string format
     cookies = "; ".join([f"{c['name']}={c['value']}" for c in cookie_list])
@@ -39,22 +39,18 @@ def classify_story(workspace_id, entity_id, cookie_list):
 
     # Set up the payload
     data = {
-        "data[id]": f"{entity_id}",
-        "data[field]": "category_id",
-        "data[value]": "1155989309001000006"
+        "data[id]": entity_id,
+        "data[field]": "owner",
+        "data[value]": f"{owner_name};"
     }
 
     # Make the request
     response = requests.post(url, headers=headers, data=data, verify=False)
     
     # Check the response
-    if response.text == '1':
-        print("Story updated successfully!")
-    else:
-        print("Failed to update the story!")
-        print(f"Response: {response.text}")
+    print(f"Response: {response.text}")
 
     return response.text
 
 # Example usage:
-# classify_story("55989309", "1155989309001001988",cookie_list)
+change_owner("55989309", "1155989309001001988", cookie_list, "AnthonyChen")
