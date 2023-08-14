@@ -8,6 +8,7 @@ from classify_story import classify_story
 from fetch_story_unclassified import fetch_story_unclassified
 from change_owner import change_owner
 from close_story import close_story
+from send_email_FN import send_email_for_stories
 
 
 # Configuring logging
@@ -16,17 +17,6 @@ logging.basicConfig(filename="emailbot.log",
                     datefmt='%Y-%m-%d %H:%M:%S',
                     level=logging.INFO)  # Change to logging.DEBUG for more detailed logs
 
-def save_last_email_time():
-    with open("last_email_time.txt", 'w') as file:
-        file.write(str(last_email_time))
-
-def read_last_email_time():
-    try:
-        with open("last_email_time.txt", 'r') as file:
-            timestamp = file.read()
-            return datetime.datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
-    except (FileNotFoundError, ValueError):
-        return None
 
 # Load configuration from config.json
 with open('config.json', 'r') as f:
@@ -143,8 +133,8 @@ def email():
 
 
 def emailRemainder_FN():
-    TO_EMAILS = ["erdong.chen-ext@ldc.com", "recipient2@example.com"]
-    CC_EMAILS = ["erdong.chen-ext@ldc.com", "cc2@example.com"]
+    TO_EMAILS = ["zhaojiabing@efunong.com", "nav-ops@efunong.com", "hupeijun@efunong.com","feiyuping@efunong.com"]
+    CC_EMAILS = [config['ccmail']['contact1'], config['ccmail']['contact2']]
 
     # Load the stories data
     try:
@@ -158,9 +148,8 @@ def emailRemainder_FN():
 
     # Check if the current time is 9:00 am
     current_time = datetime.datetime.now().time()
-    print(current_time)
 
-    if current_time.hour == 14 and current_time.minute == 54:
+    if current_time.hour == 9 and current_time.minute == 0:
         stories_to_send = []
         for story_id, story_data in stories.items():
             # Convert the modified date from string to datetime
@@ -171,7 +160,6 @@ def emailRemainder_FN():
 
         # Now, send these stories through email
         if stories_to_send:
-            print("email fn sent")
             send_email_for_stories(TO_EMAILS, CC_EMAILS, stories_to_send)
 
 

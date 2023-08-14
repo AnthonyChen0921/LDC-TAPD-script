@@ -7,6 +7,10 @@
         "unclassified_story_file": "story_unclassified.json",
         "email_map_file": "contact.json"
     },
+    "ccmail":{
+        "contact1": "alan.pei@ldc.com",
+        "contact2": "erdong.chen-ext@ldc.com"
+    },
     "api": {
         "sleep_time": 65
     },
@@ -29,7 +33,7 @@
         "classify": 1,
         "autoClose": 0,
         "autoFillOwner": 1,
-        "emailRemainder_FN": 1
+        "emailRemainder_FN": 0
     },
     "workspace_id": "55989309",
     "threshold_days": 30
