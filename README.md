@@ -173,6 +173,12 @@ To install other packages, replace "pandas" with "package_name"
 在data_utils.py里我把request里verify=false了，true的话会报那个SSL，但是false的话会报这个warning，不知道怎么解决，但是不影响结果，所以就先这样吧
 
 
+## 3. Logging erorr: Expecting ':' delimiter:
+> [ERROR]: Encountered an error: Expecting ':' delimiter: line 1 column 30539 (char 30538) but continue running.
+
+json文件可能被改动了，先试试删掉story.json，重新运行。
+可以删掉story_unclassified.json，重新运行。
+如果还不行，按以下顺序检查Json file是否valid：cookies.json -> config.json -> contact.json
 ## Disclaimer
 
 > This script is provided as-is, and it may require adjustments based on your specific needs, such as file names, file locations, and specific business logic. Please use it as a reference and modify it as necessary to suit your requirements.

@@ -124,7 +124,7 @@ def email():
 
             print(f"Found recipient emails: {recipient_emails}")
             if recipient_emails:
-                cc_emails = ['erdong.chen-ext@ldc.com']
+                cc_emails = ['erdong.chen-ext@ldc.com', 'alan.pei@ldc.com']
                 logging.info(f"Sending email to {recipient_emails} with CC {cc_emails} for story {story_data['id']}")  # Logging the email action
                 send_email(recipient_emails, cc_emails, story_data)
             else:
