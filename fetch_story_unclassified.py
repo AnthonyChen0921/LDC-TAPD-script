@@ -11,7 +11,7 @@ def fetch_story_unclassified(workspace_id, cookie_list):
 
     url = "https://www.tapd.cn/api/aggregation/story_aggregation/get_story_fields_userviews_roles_workflowsteps_category_and_list"
     params = {
-        "workspace_id": "55989309",
+        "workspace_id": workspace_id,
         "data[type]": "story",
         "location": "/prong/stories/stories_list",
         "data[query_token]": "f7404cf77c01fb0ca5a2d44f21f28fa8",
@@ -26,7 +26,7 @@ def fetch_story_unclassified(workspace_id, cookie_list):
         "Cookie": cookies,
         "Host": "www.tapd.cn",
         "Origin": "https://www.tapd.cn",
-        "Referer": "https://www.tapd.cn/tapd_fe/55989309/story/list?queryToken=f7404cf77c01fb0ca5a2d44f21f28fa8&categoryId=1155989309001000006&sort_name=&order=&useScene=storyList&conf_id=1155989309001004492&page=1",
+        "Referer": f"https://www.tapd.cn/tapd_fe/{workspace_id}/story/list?queryToken=f7404cf77c01fb0ca5a2d44f21f28fa8&categoryId=1155989309001000006&sort_name=&order=&useScene=storyList&conf_id=1155989309001004492&page=1",
         "Sec-Ch-Ua": "\"Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"115\", \"Chromium\";v=\"115\"",
         "Sec-Ch-Ua-Mobile": "?0",
         "Sec-Ch-Ua-Platform": "\"Windows\"",
@@ -36,7 +36,7 @@ def fetch_story_unclassified(workspace_id, cookie_list):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
     }
 
-    data = {"workspace_id":"55989309","conf_id":"1155989309001004492","sort_name":"","confIdType":"URL","order":"","perpage":"100","page":1,"query_token":"f7404cf77c01fb0ca5a2d44f21f28fa8","category_id":"-1","location":"/prong/stories/stories_list","target":"55989309/story/list","entity_types":["story"],"use_scene":"storyList","list_type":"flat","need_category_counts":1,"menu_workitem_type_id":"","dsc_token":"1OaxKPDD0LFFc93M"}
+    data = {"workspace_id": workspace_id,"conf_id":"1155989309001004492","sort_name":"","confIdType":"URL","order":"","perpage":"100","page":1,"query_token":"f7404cf77c01fb0ca5a2d44f21f28fa8","category_id":"-1","location":"/prong/stories/stories_list","target":"55989309/story/list","entity_types":["story"],"use_scene":"storyList","list_type":"flat","need_category_counts":1,"menu_workitem_type_id":"","dsc_token":"1OaxKPDD0LFFc93M"}
 
     response = requests.post(url, headers=headers, params=params, data=json.dumps(data), verify=False)
 
