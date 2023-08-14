@@ -10,3 +10,6 @@ __pycache__/fetch_story.cpython-311.pyc
 __pycache__/send_email.cpython-311.pyc
 emailbot.log
 README.md
+__pycache__
+emailbot.log
+.gitignore

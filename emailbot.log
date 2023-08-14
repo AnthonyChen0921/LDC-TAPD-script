@@ -21,6 +21,14 @@
 2023-08-10 14:54:32 [INFO]: Assigning owner of story 1155989309001001856 with creator å¼ ç¾½å³°_LDC
 2023-08-10 15:09:52 [INFO]: Classifying story 1155989309001001988 with data Case-TAPD Scripting Test, plz Ignore
 2023-08-10 15:11:31 [INFO]: Classifying story 1155989309001001988 with title: 'Case-TAPD Scripting Test, plz Ignore' to Production Case
-2023-08-10 16:44:54 [INFO]: Classifying story 1155989309001001999 with title: 'Case-Çë°ïÃ¦²é¿´ÎªÊ²Ã´Ã»ÓÐ¸¶¿îÌõ¼þ' to Production Case
-2023-08-10 16:45:09 [INFO]: Assigning owner of story 1155989309001001999 with creator FLÖÓÃô¾ý
+2023-08-10 16:44:54 [INFO]: Classifying story 1155989309001001999 with title: 'Case-ï¿½ï¿½ï¿½Ã¦ï¿½é¿´ÎªÊ²Ã´Ã»ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½' to Production Case
+2023-08-10 16:45:09 [INFO]: Assigning owner of story 1155989309001001999 with creator FLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 2023-08-10 16:52:39 [INFO]: Starting script at 2023-08-10 16:52:39.206686
+2023-08-14 09:16:02 [INFO]: Starting script at 2023-08-14 09:16:02.103959
+2023-08-14 09:16:02 [WARNING]: No recipients found for for owner: ï¿½ï¿½ï¿½ï¿½Í®. Consider add to contact.json manually
+2023-08-14 09:16:02 [WARNING]: No recipients found for the given owners.
+2023-08-14 09:16:02 [WARNING]: No recipients found for for owner: ï¿½ï¿½ï¿½ï¿½_LDC. Consider add to contact.json manually
+2023-08-14 09:16:02 [WARNING]: No recipients found for the given owners.
+2023-08-14 09:16:03 [INFO]: Classifying story 1155989309001002010 with title: 'Case-TJIBSBMS2303159(SC202308101630314016),TJIBSBMS2303158(SC202308101630108401)ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Í·Å·ï¿½Ê½ï¿½ï¿½TTï¿½ï¿½Ò»ï¿½ï¿½' to Production Case
+2023-08-14 10:29:20 [INFO]: Starting script at 2023-08-14 10:29:20.278668
+2023-08-14 10:31:49 [INFO]: Starting script at 2023-08-14 10:31:49.169044
