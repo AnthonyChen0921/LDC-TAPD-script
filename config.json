@@ -8,7 +8,7 @@
         "email_map_file": "contact.json"
     },
     "api": {
-        "sleep_time": 10
+        "sleep_time": 65
     },
     "compliance_criteria": {
         "high": {
@@ -28,7 +28,8 @@
         "email": 1,
         "classify": 1,
         "autoClose": 0,
-        "autoFillOwner": 1
+        "autoFillOwner": 1,
+        "emailRemainder_FN": 1
     },
     "workspace_id": "55989309",
     "threshold_days": 30

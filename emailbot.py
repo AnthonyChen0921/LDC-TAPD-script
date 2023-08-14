@@ -16,6 +16,17 @@ logging.basicConfig(filename="emailbot.log",
                     datefmt='%Y-%m-%d %H:%M:%S',
                     level=logging.INFO)  # Change to logging.DEBUG for more detailed logs
 
+def save_last_email_time():
+    with open("last_email_time.txt", 'w') as file:
+        file.write(str(last_email_time))
+
+def read_last_email_time():
+    try:
+        with open("last_email_time.txt", 'r') as file:
+            timestamp = file.read()
+            return datetime.datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
+    except (FileNotFoundError, ValueError):
+        return None
 
 # Load configuration from config.json
 with open('config.json', 'r') as f:
@@ -130,6 +141,41 @@ def email():
             else:
                 logging.warning("No recipients found for the given owners.")
 
+
+def emailRemainder_FN():
+    TO_EMAILS = ["erdong.chen-ext@ldc.com", "recipient2@example.com"]
+    CC_EMAILS = ["erdong.chen-ext@ldc.com", "cc2@example.com"]
+
+    # Load the stories data
+    try:
+        with open(config['file_names']['story_file'], 'r') as file:
+            stories = json.load(file)
+    except FileNotFoundError:
+        stories = {}
+
+    # Calculate the threshold date, which is 24 hours ago
+    threshold_date = datetime.datetime.now() - datetime.timedelta(hours=24)
+
+    # Check if the current time is 9:00 am
+    current_time = datetime.datetime.now().time()
+    print(current_time)
+
+    if current_time.hour == 14 and current_time.minute == 54:
+        stories_to_send = []
+        for story_id, story_data in stories.items():
+            # Convert the modified date from string to datetime
+            modified_date = datetime.datetime.strptime(story_data['modified'], "%Y-%m-%d %H:%M:%S")
+
+            if modified_date > threshold_date and story_data["status"] == 'status_3':
+                stories_to_send.append(story_data)
+
+        # Now, send these stories through email
+        if stories_to_send:
+            print("email fn sent")
+            send_email_for_stories(TO_EMAILS, CC_EMAILS, stories_to_send)
+
+
+
 logging.info(f"Starting script at {datetime.datetime.now()}")  # Logging the start of the script
 
 # run the main function every sleep_time seconds
@@ -143,6 +189,9 @@ while True:
             autoClose()
         if config["control_flags"]["autoFillOwner"]:
             autoFillOwner()
+        if config["control_flags"]["emailRemainder_FN"]:
+            emailRemainder_FN()
+        
     except Exception as e:
         logging.error(f"Encountered an error: {str(e)} but continue running.")
     # Optionally re-raise the exception if you want to see the traceback or debug it
