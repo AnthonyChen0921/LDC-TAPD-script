@@ -33,18 +33,41 @@ with open(config['file_names']['cookie_file'], 'r') as f:
 workspace_id = config["workspace_id"]
 
 
-def send_email_via_smtp(bcc_recipients, subject, body):
+def send_email_via_smtp(bcc_recipients):
     # SMTP server details
     smtp_server = "smtprelay.ldc.com"
     smtp_port = 25
     username = "asi-navigator@ldc.com"
 
+    # Constructing the HTML message
+    html_message = """
+    <html>
+    <head></head>
+    <body>
+        <p>Hi all,</p>
+        <br>
+        <p>请每天关注TAPD平台中工作台部分的“我的待办”，如果生产case符合以下上三个状态的，请及时更新状态并“流转”。</p>
+        <ul>
+            <li>关闭（已处理）</li>
+            <li>关闭（转长期追踪）</li>
+            <li>关闭（转需求）</li>
+        </ul>
+        <p>如果对处理结果不满意的，请将“处理人”还原为上一位富农产品/开发/测试的名字，并将状态更新为“FN处理中”。</p>
+        <p>对以上操作，有任何疑问的，请随时联系我/Chiling, 谢谢。</p>
+        <br>
+        <p>Best Regards,</p>
+        <br>
+        <img src="path_to_your_signature_image.png" alt="Signature">
+    </body>
+    </html>
+    """
+
     # Create the MIMEText object for email body
     msg = MIMEMultipart()
     msg['From'] = username
     msg['To'] = username  # Since we're using BCC, we'll set the TO header to the sender
-    msg['Subject'] = subject
-    msg.attach(MIMEText(body, 'plain'))
+    msg['Subject'] = "【航海家系统】生产Case及时关闭"  # Set your desired subject here
+    msg.attach(MIMEText(html_message, 'html'))
 
     # Send the email
     with smtplib.SMTP(smtp_server, smtp_port) as server:
@@ -93,7 +116,7 @@ def email():
     test_emails=list(test_emmails_set)
     print(f"Found recipient emails: {test_emmails_set}")
 
-    send_email_via_smtp(test_emails, "test", "tset")
+    send_email_via_smtp(test_emails)
 
 
 email()
