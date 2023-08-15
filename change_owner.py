@@ -40,8 +40,8 @@ def change_owner(workspace_id, entity_id, cookie_list, owner_name):
     # Set up the payload
     data = {
         "data[id]": entity_id,
-        "data[field]": "owner",
-        "data[value]": f"{owner_name};"
+        "data[field]": "custom_field_two",
+        "data[value]": f"{owner_name}"
     }
 
     # Make the request
@@ -53,4 +53,4 @@ def change_owner(workspace_id, entity_id, cookie_list, owner_name):
     return response.text
 
 # Example usage:
-change_owner("55989309", "1155989309001001988", cookie_list, "AnthonyChen")
+change_owner("55989309", "1155989309001001988", cookie_list, "AnthonyChen;")

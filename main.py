@@ -65,7 +65,7 @@ for i, row in df.iterrows():
 
     # Pause for a while to avoid hitting API rate limits
     # The sleep time
-    time.sleep(config['api']['sleep_time'])
+    time.sleep(3)
 
 
 # Save the updated dataframe to a new excel file
