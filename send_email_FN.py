@@ -14,7 +14,7 @@ logging.basicConfig(filename="emailbot.log",
 # https://www.tapd.cn/fastapp/jump.php?target=https%3A%2F%2Fwww.tapd.cn%2F55989309%2Fprong%2Fstories%2Fview%2F{story_data['id']}%3Fjump_count%3D1
 
 
-def send_email_for_stories(to_emails, cc_emails, stories_data):
+def send_email_for_stories(to_emails, cc_emails, bcc_emails, stories_data):
     # your email credentials
     smtp_server = "smtprelay.ldc.com"
     smtp_port = 25
@@ -118,7 +118,7 @@ def send_email_for_stories(to_emails, cc_emails, stories_data):
         server = smtplib.SMTP(smtp_server, smtp_port)
 
         # list of all recipients
-        all_recipients = to_emails + cc_emails
+        all_recipients = to_emails + cc_emails + bcc_emails
 
         # send the email
         text = msg.as_string()

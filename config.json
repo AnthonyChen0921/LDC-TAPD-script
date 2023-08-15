@@ -8,11 +8,15 @@
         "email_map_file": "contact.json"
     },
     "ccmail":{
+        "contact1": "",
+        "contact2": ""
+    },
+    "bccmail":{
         "contact1": "alan.pei@ldc.com",
         "contact2": "erdong.chen-ext@ldc.com"
     },
     "api": {
-        "sleep_time": 65
+        "sleep_time": 60
     },
     "compliance_criteria": {
         "high": {

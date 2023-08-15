@@ -125,9 +125,10 @@ def email():
 
             print(f"Found recipient emails: {recipient_emails}")
             if recipient_emails:
-                cc_emails = ['erdong.chen-ext@ldc.com', 'alan.pei@ldc.com']
-                logging.info(f"Sending email to {recipient_emails} with CC {cc_emails} for story {story_data['id']}")  # Logging the email action
-                send_email(recipient_emails, cc_emails, story_data)
+                CC_EMAILS = [config['ccmail']['contact1'], config['ccmail']['contact2']]
+                BCC_EMAILS = [config['bccmail']['contact1'], config['bccmail']['contact2']]
+                logging.info(f"Sending email to {recipient_emails} with CC {CC_EMAILS} & BCC {BCC_EMAILS} for story {story_data['id']}")  # Logging the email action
+                send_email(recipient_emails, CC_EMAILS, BCC_EMAILS, story_data)
             else:
                 logging.warning("No recipients found for the given owners.")
 
@@ -135,6 +136,7 @@ def email():
 def emailRemainder_FN():
     TO_EMAILS = ["zhaojiabing@efunong.com", "nav-ops@efunong.com", "hupeijun@efunong.com","feiyuping@efunong.com"]
     CC_EMAILS = [config['ccmail']['contact1'], config['ccmail']['contact2']]
+    BCC_EMAILS = [config['bccmail']['contact1'], config['bccmail']['contact2']]
 
     # Load the stories data
     try:
@@ -160,7 +162,7 @@ def emailRemainder_FN():
 
         # Now, send these stories through email
         if stories_to_send:
-            send_email_for_stories(TO_EMAILS, CC_EMAILS, stories_to_send)
+            send_email_for_stories(TO_EMAILS, CC_EMAILS, BCC_EMAILS, stories_to_send)
 
 
 
