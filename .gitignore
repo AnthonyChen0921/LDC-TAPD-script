@@ -15,4 +15,4 @@ emailbot.log
 .gitignore
 __pycache__/data_utils.cpython-311.pyc
 __pycache__/fetch_history.cpython-311.pyc
-__pycache__/utils.cpython-311.pyc
+__pycache__
