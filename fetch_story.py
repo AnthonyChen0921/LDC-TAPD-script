@@ -44,7 +44,7 @@ def fetch_story(workspace_id, cookie_list, page):
         "order": "",
         "perpage": 100,
         "page": page,
-        "query_token": "d4b7ab949c883a3890cff3254503140d",
+        "query_token": "ec1e42253ebfca356e9b916f46c4ac31",
         "category_id": "1155989309001000006",
         "location": "/prong/stories/stories_list",
         "useScene": "storyList",

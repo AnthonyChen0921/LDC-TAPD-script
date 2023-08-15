@@ -15,4 +15,8 @@ emailbot.log
 .gitignore
 __pycache__/data_utils.cpython-311.pyc
 __pycache__/fetch_history.cpython-311.pyc
-__pycache__
+__pycache__/*.pyc
+__pycache__/change_owner.cpython-37.pyc
+__pycache__/fetch_story_unclassified.cpython-37.pyc
+__pycache__/fetch_story.cpython-37.pyc
+__pycache__/send_email.cpython-37.pyc

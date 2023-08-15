@@ -59,11 +59,11 @@ def autoFillOwner():
 
     # Check for empty owners and print them
     for story_id, story_data in stories.items():
-        owner = story_data.get('owner', '').strip()  # get the owner and strip any whitespace
+        owner = story_data.get('custom_field_two', '').strip()  # get the owner and strip any whitespace
         creator = story_data.get('creator', 'Unknown creator')  # get the creator or default to 'Unknown creator' if not present
         if not owner:  # check if owner is empty
-            print(f"Story ID {story_id} has an empty owner. Created by {creator}.")
-            logging.info(f"Assigning owner of story {story_id} with creator {creator}")  # Logging the assignment
+            print(f"Story ID {story_id} has an empty follower. Created by {creator}.")
+            logging.info(f"Assigning follower of story {story_id} with creator {creator}")  # Logging the assignment
             change_owner(workspace_id, story_id, cookie_list, creator)
 
 
@@ -171,6 +171,7 @@ logging.info(f"Starting script at {datetime.datetime.now()}")  # Logging the sta
 # run the main function every sleep_time seconds
 while True:
     try:
+        fetch_story(workspace_id, cookie_list, 1)
         if config["control_flags"]["email"]:
             email()
         if config["control_flags"]["classify"]:

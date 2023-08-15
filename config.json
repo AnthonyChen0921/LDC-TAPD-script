@@ -33,9 +33,9 @@
         }
     },
     "control_flags": {
-        "email": 1,
+        "email": 0,
         "classify": 1,
-        "autoClose": 0,
+        "autoClose": 1,
         "autoFillOwner": 1,
         "emailRemainder_FN": 0
     },
