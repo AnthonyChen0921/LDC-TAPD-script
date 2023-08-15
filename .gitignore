@@ -20,3 +20,4 @@ __pycache__/change_owner.cpython-37.pyc
 __pycache__/fetch_story_unclassified.cpython-37.pyc
 __pycache__/fetch_story.cpython-37.pyc
 __pycache__/send_email.cpython-37.pyc
+weekly_email.py

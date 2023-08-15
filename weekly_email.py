@@ -9,6 +9,10 @@ from fetch_story_unclassified import fetch_story_unclassified
 from change_owner import change_owner
 from close_story import close_story
 from send_email_FN import send_email_for_stories
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 
 
 # Configuring logging
