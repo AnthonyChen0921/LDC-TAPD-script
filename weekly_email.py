@@ -33,7 +33,7 @@ with open(config['file_names']['cookie_file'], 'r') as f:
 workspace_id = config["workspace_id"]
 
 
-def send_email_via_smtp(bcc_recipients):
+def send_email_via_smtp(bcc_recipients, cc_emails):
     # SMTP server details
     smtp_server = "smtprelay.ldc.com"
     smtp_port = 25
@@ -53,11 +53,11 @@ def send_email_via_smtp(bcc_recipients):
             <li>关闭（转需求）</li>
         </ul>
         <p>如果对处理结果不满意的，请将“处理人”还原为上一位富农产品/开发/测试的名字，并将状态更新为“FN处理中”。</p>
-        <p>对以上操作，有任何疑问的，请随时联系我/Chiling, 谢谢。</p>
+        <p>对以上操作，有任何疑问的，请随时联系Alan/Chiling, 谢谢。</p>
         <br>
         <p>Best Regards,</p>
         <br>
-        <img src="https://cdn.farmjournal.com/s3fs-public/styles/840x600/public/3940ADDE-BA80-492A-AC538FEA166DDB1D.png?itok=pnOL7UCG" alt="Signature">
+        <img src="https://cdn.farmjournal.com/s3fs-public/styles/840x600/public/3940ADDE-BA80-492A-AC538FEA166DDB1D.png?itok=pnOL7UCG" alt="Signature" height="100">
     </body>
     </html>
     """
@@ -66,6 +66,7 @@ def send_email_via_smtp(bcc_recipients):
     msg = MIMEMultipart()
     msg['From'] = username
     msg['To'] = username  # Since we're using BCC, we'll set the TO header to the sender
+    msg["Cc"] = ", ".join(cc_emails)
     msg['Subject'] = "【航海家系统】生产Case及时关闭"  # Set your desired subject here
     msg.attach(MIMEText(html_message, 'html'))
 
@@ -112,11 +113,12 @@ def email():
 
     # Convert the set back to a list
     recipient_emails = list(recipient_emails_set)
+
     test_emmails_set.add("Erdong.Chen-EXT@ldc.com")
     test_emails=list(test_emmails_set)
     print(f"Found recipient emails: {test_emmails_set}")
 
-    send_email_via_smtp(test_emails)
+    send_email_via_smtp(test_emails, ["Erdong.Chen-EXT@ldc.com", "alan.pei@ldc.com"])
 
 
 email()
