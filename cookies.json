@@ -1,7 +1,7 @@
 [
     {
         "domain": ".tapd.cn",
-        "expirationDate": 1722062525,
+        "expirationDate": 1723773651,
         "hostOnly": false,
         "httpOnly": false,
         "name": "__root_domain_v",
@@ -15,7 +15,7 @@
     },
     {
         "domain": ".tapd.cn",
-        "expirationDate": 1722062529,
+        "expirationDate": 1723773651,
         "hostOnly": false,
         "httpOnly": false,
         "name": "_qddaz",
@@ -24,40 +24,12 @@
         "secure": true,
         "session": false,
         "storeId": "0",
-        "value": "QD.780690508195708",
+        "value": "QD.818390962653914",
         "id": 2
     },
     {
         "domain": ".tapd.cn",
-        "expirationDate": 1691131360,
-        "hostOnly": false,
-        "httpOnly": true,
-        "name": "_t_crop",
-        "path": "/",
-        "sameSite": "unspecified",
-        "secure": false,
-        "session": false,
-        "storeId": "0",
-        "value": "39151612",
-        "id": 3
-    },
-    {
-        "domain": ".tapd.cn",
-        "expirationDate": 1691131360,
-        "hostOnly": false,
-        "httpOnly": true,
-        "name": "_t_uid",
-        "path": "/",
-        "sameSite": "unspecified",
-        "secure": false,
-        "session": false,
-        "storeId": "0",
-        "value": "886333224",
-        "id": 4
-    },
-    {
-        "domain": ".tapd.cn",
-        "expirationDate": 1690531965.647047,
+        "expirationDate": 1692237984.471959,
         "hostOnly": false,
         "httpOnly": true,
         "name": "_wt",
@@ -66,12 +38,12 @@
         "secure": false,
         "session": false,
         "storeId": "0",
-        "value": "eyJ1aWQiOiI4ODYzMzMyMjQiLCJjb21wYW55X2lkIjoiMzkxNTE2MTIiLCJleHAiOjE2OTA1MzE5NjV9.2c2c974d22cd3fe1e4dd67fa03244a7e77538e34d2012d10ccbb9fd2f65e197a",
-        "id": 5
+        "value": "eyJ1aWQiOiI4ODYzMzMyMjQiLCJjb21wYW55X2lkIjoiMzkxNTE2MTIiLCJleHAiOjE2OTIyMzc5ODR9.6573a798b065fe00e820e0d4a41d943df8ca921b3d20d9ed00b84fe5e10f9b62",
+        "id": 3
     },
     {
         "domain": ".tapd.cn",
-        "expirationDate": 1690612954,
+        "expirationDate": 1692324079.746146,
         "hostOnly": false,
         "httpOnly": false,
         "name": "locale",
@@ -81,11 +53,25 @@
         "session": false,
         "storeId": "0",
         "value": "zh_CN",
-        "id": 6
+        "id": 4
     },
     {
         "domain": ".tapd.cn",
-        "expirationDate": 1691131359,
+        "expirationDate": 1692842482.51786,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "t_cloud_login",
+        "path": "/",
+        "sameSite": "unspecified",
+        "secure": false,
+        "session": false,
+        "storeId": "0",
+        "value": "erdong.chen-ext%40ldc.com",
+        "id": 5
+    },
+    {
+        "domain": ".tapd.cn",
+        "expirationDate": 1692842482.517683,
         "hostOnly": false,
         "httpOnly": true,
         "name": "t_u",
@@ -94,26 +80,12 @@
         "secure": false,
         "session": false,
         "storeId": "0",
-        "value": "46e611de59b96c28aac14b7a3ea32179caf52633a21345d5b05e9df4d630d5de39a873958281bd9f3a6b681baa93c51b5cf935a213dddc0774e0df8dca40b8765cc032474040c930%7C1",
-        "id": 7
+        "value": "46e611de59b96c28aac14b7a3ea321799d0d7c78e387f9ea8db076dfd8896388ef2262ec3648dbd452f5ea7e01f9bc7908d8df604ee30f64e761cb30cbac87d6e026548083e0ddb7%7C1",
+        "id": 6
     },
     {
         "domain": ".tapd.cn",
-        "expirationDate": 1691131360,
-        "hostOnly": false,
-        "httpOnly": true,
-        "name": "tapd_div",
-        "path": "/",
-        "sameSite": "unspecified",
-        "secure": false,
-        "session": false,
-        "storeId": "0",
-        "value": "101_369",
-        "id": 8
-    },
-    {
-        "domain": ".tapd.cn",
-        "expirationDate": 1691136475.661342,
+        "expirationDate": 1692842484.472035,
         "hostOnly": false,
         "httpOnly": true,
         "name": "tapdsession",
@@ -122,8 +94,22 @@
         "secure": false,
         "session": false,
         "storeId": "0",
-        "value": "1690526523163eb66a070f893076e2acf873a032cdabbc594cb25db86de82ffc7967749107",
-        "id": 9
+        "value": "1692237649e2522acb16c8c724f23d086c40517dcb0a07d2f9ce1a11504014095af637d46b",
+        "id": 7
+    },
+    {
+        "domain": "www.tapd.cn",
+        "expirationDate": 1692239451,
+        "hostOnly": true,
+        "httpOnly": false,
+        "name": "_qdda",
+        "path": "/",
+        "sameSite": "unspecified",
+        "secure": true,
+        "session": false,
+        "storeId": "0",
+        "value": "3-1.1q51i1",
+        "id": 8
     },
     {
         "domain": "www.tapd.cn",
@@ -135,8 +121,8 @@
         "secure": true,
         "session": true,
         "storeId": "0",
-        "value": "3-9102mn.lkm7ufda",
-        "id": 10
+        "value": "3-4qcf47.lleilspo",
+        "id": 9
     },
     {
         "domain": "www.tapd.cn",
@@ -149,7 +135,7 @@
         "session": true,
         "storeId": "0",
         "value": "55989309",
-        "id": 11
+        "id": 10
     },
     {
         "domain": "www.tapd.cn",
@@ -161,7 +147,21 @@
         "secure": false,
         "session": true,
         "storeId": "0",
-        "value": "uaCq59BE3oh3dcIk",
+        "value": "NtgdCBEL8gP1wTbw",
+        "id": 11
+    },
+    {
+        "domain": "www.tapd.cn",
+        "expirationDate": 1692238249.746133,
+        "hostOnly": true,
+        "httpOnly": false,
+        "name": "sso-login-token",
+        "path": "/",
+        "sameSite": "unspecified",
+        "secure": false,
+        "session": false,
+        "storeId": "0",
+        "value": "3a1e6ab5a554c9f3963f4f98b492a06f",
         "id": 12
     }
     ]

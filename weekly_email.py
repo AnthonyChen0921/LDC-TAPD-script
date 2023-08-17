@@ -118,7 +118,7 @@ def email():
     test_emails=list(test_emmails_set)
     print(f"Found recipient emails: {test_emmails_set}")
 
-    send_email_via_smtp(test_emails, ["Erdong.Chen-EXT@ldc.com", "alan.pei@ldc.com"])
+    send_email_via_smtp(recipient_emails, ["Erdong.Chen-EXT@ldc.com", "alan.pei@ldc.com"])
 
 
 email()

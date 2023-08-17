@@ -80,3 +80,12 @@
 2023-08-15 15:38:26 [INFO]: Assigning follower of story 1155989309001001846 with creator liulianlian
 2023-08-15 15:38:51 [INFO]: Starting script at 2023-08-15 15:38:51.415659
 2023-08-15 15:49:22 [INFO]: Starting script at 2023-08-15 15:49:22.051317
+2023-08-16 09:37:14 [INFO]: Starting script at 2023-08-16 09:37:14.031402
+2023-08-16 10:52:11 [INFO]: Assigning follower of story 1155989309001001988 with creator AnthonyChen
+2023-08-16 11:27:13 [INFO]: Classifying story 1155989309001002013 with title: 'Case-河北腾信财达农牧集团有限公司-客户无法签章' to Production Case
+2023-08-16 11:28:16 [INFO]: Assigning follower of story 1155989309001002013 with creator EvaGao_LDC
+2023-08-16 13:11:31 [INFO]: Classifying story 1155989309001002014 with title: 'Case-客户签署组未设置，将合同退回待审核状态' to Production Case
+2023-08-16 13:12:34 [INFO]: Assigning follower of story 1155989309001002014 with creator 张羽峰_LDC
+2023-08-16 14:27:12 [ERROR]: Encountered an error: [Errno 13] Permission denied: 'story.json' but continue running.
+2023-08-17 10:02:05 [INFO]: Starting script at 2023-08-17 10:02:05.408594
+2023-08-17 10:07:13 [INFO]: Starting script at 2023-08-17 10:07:13.585340
